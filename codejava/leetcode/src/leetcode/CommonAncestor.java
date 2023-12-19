@@ -44,16 +44,12 @@ public class CommonAncestor {
 			showDepthRec(rootNode.right);
 		}
 	}
-
 	public void ancestor(int a,int b) {
 		Tree temp=null;
 		temp=rootNode;
 		temp=ancestorrec(temp,a,b);
 	}
 	public Tree ancestorrec(Tree n1,int p,int q) {
-//		System.out.println("root"+n1.getData());
-//		System.out.println("root left"+n1.left.getData());
-//		System.out.println("root right"+n1.right.getData());
 		if((n1.left==null) || (n1.right==null)) {
 			if(p>q) {
 				System.out.println(q);
@@ -87,7 +83,5 @@ public class CommonAncestor {
 		t1.addTree(6);
 
 		t1.ancestor(7,12);
-		//t1.showDepth();
 	}
-
 }
