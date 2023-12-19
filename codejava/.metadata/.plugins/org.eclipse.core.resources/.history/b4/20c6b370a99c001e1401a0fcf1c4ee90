@@ -1,0 +1,10 @@
+package leetcode;
+
+public class AddLinkedList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

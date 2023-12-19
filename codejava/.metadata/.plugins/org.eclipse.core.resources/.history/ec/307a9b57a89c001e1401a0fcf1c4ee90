@@ -1,0 +1,66 @@
+package leetcode;
+
+import java.util.LinkedList;
+
+public class AddTwoNodes{
+
+	Node head;
+	
+	
+	public void add(int data) {
+		Node container = new Node();
+		container.setData(data);
+		if (head == null) {
+			head = container;
+		} else {
+			Node tempNode = head;
+			while (tempNode.next!= null) {
+				tempNode = tempNode.next;
+			}
+			tempNode.next=container;
+		}
+	}
+	
+	public void addNodes(AddTwoNodes a,AddTwoNodes b) {
+		AddTwoNodes n3=new AddTwoNodes();
+		int sum=0;
+		while(a!=null||b!=null) {
+			if(a!=null) {
+				
+			}
+				if(a != null && a.next != null){
+	                a = a.next;
+	            }else{
+	                a = null;
+	            }
+	            if(b != null && b.next != null){
+	                b = b.next;
+	            }else{
+	                b = null;
+			}
+		}
+			
+	}
+	
+	public static void main(String[] args) {
+		AddTwoNodes l1=new AddTwoNodes();
+		AddTwoNodes l2=new AddTwoNodes();
+		AddTwoNodes l3=new AddTwoNodes();
+		
+		l1.add(12);
+		l1.add(16);
+		l1.add(18);
+		l2.add(14);
+		l2.add(15);
+		l2.add(10);
+		l3.addNodes(l1,l2);
+		
+		//System.out.println(l1);
+		//System.out.println(l2);
+		
+		
+		
+		
+	}
+
+}

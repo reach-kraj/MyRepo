@@ -1,0 +1,61 @@
+package leetcode;
+
+//import javacode.Node;
+
+//import javacode.Node;
+
+//import java.util.LinkedList;
+
+public class AddLinkedList {
+	Node head;
+	
+	public void add(int data) {
+		Node container = new Node();
+		container.setData(data);
+		if (head == null) {
+			head = container;
+		} else {
+			Node tempNode = head;
+			while (tempNode.next!= null) {
+				tempNode = tempNode.next;
+			}
+			container=tempNode.next;
+		}
+	}
+	
+	public void show() {
+		Node container = head;
+		if(container==null) {
+			System.out.println("list is empty");
+		}else {
+			while (container.next != null) {
+				System.out.println(container.getData());
+				container = container.next;
+			}
+			System.out.println(container.getData());
+		}
+	}
+	
+	public void addNodes(AddLinkedList l1,AddLinkedList l2) {
+		
+	}
+
+	public static void main(String[] args) {
+		AddLinkedList l1 =new AddLinkedList();
+		AddLinkedList l2 =new AddLinkedList();
+		AddLinkedList l3 =new AddLinkedList();
+		
+		l1.add(10);
+		l1.add(20);
+		l1.add(30);
+		
+		l2.add(1);
+		l2.add(2);
+		l2.add(3);
+		
+		l3.addNodes(l1, l2);
+		
+		
+		}
+
+}

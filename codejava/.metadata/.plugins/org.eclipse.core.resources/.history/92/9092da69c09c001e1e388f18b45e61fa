@@ -1,0 +1,144 @@
+package leetcode;
+
+public class AddTwoNode {
+
+	class Node 
+	{
+		private int data;
+		private Node next;
+		private Node previous;
+		
+		public Node getPrevious() {
+			return previous;
+		}
+		public void setPrevious(Node previous) {
+			this.previous = previous;
+		}
+		public Node getNext() {
+			return next;
+		}
+		public void setNext(Node next) {
+			this.next = next;
+		}
+		public int getData() {
+			return data;
+		}
+		public void setData(int data) {
+			this.data = data;
+		}
+	}
+	Node head;
+	public void add(int data) {
+		Node container = new Node();
+		container.setData(data);
+		if (head == null) {
+			head = container;
+		} else {
+			Node tempNode = head;
+			while (tempNode.getNext()!= null) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(container);
+		}
+	}
+	public int nodeCount(AddTwoNode List1) {
+		Node tempNode=List1.head;
+		int count=1;
+			while(tempNode.getNext()!=null) {
+				count++;
+				tempNode=tempNode.getNext();
+			}
+			return count;
+	}
+
+	public void show() {
+		Node container = head;
+		if(container==null) {
+			System.out.println("list is empty");
+		}else {
+			while (container.getNext() != null) {
+				System.out.print(container.getData()+" ");
+				container = container.getNext();
+			}
+			System.out.print(container.getData()+" ");
+		}
+	}
+	public void addBoth(AddTwoNode List1,AddTwoNode List2,AddTwoNode List3) {
+		Node one=List1.head;
+		Node two=List2.head;
+		int sum=0,onedata=0,twodata=0;
+		
+		while(one!=null || two!=null) {
+			if(one!=null) {
+				onedata=one.getData();
+			}
+			if(two!=null) {
+				twodata=two.getData();
+			}
+			sum=onedata+twodata;
+			List3.add(sum);
+			if(sum!=0) {
+				one=one.getNext();
+				two=two.getNext();
+			}
+		}
+		System.out.println(" ");
+		System.out.println("Added List :");
+		List3.show();
+	}
+	
+	public void addCarry(AddTwoNode List1,AddTwoNode List2,AddTwoNode List3) {
+		Node one=List1.head;
+		Node two=List2.head;
+		int sum=0,onedata=0,twodata=0;
+		String arr1="";;
+		//int[] arr2=new int[size];
+		while(one!=null || two!=null) {
+			if(one!=null) {
+				onedata=one.getData();
+			}
+			if(two!=null) {
+				twodata=two.getData();
+			}
+			arr1+=onedata;
+			arr2[sum]=twodata;
+			sum++;
+			if(sum!=0) {
+				one=one.getNext();
+				two=two.getNext();
+			}
+			
+		}
+		
+		System.out.println(" ");
+		System.out.println("Added List :");
+		List3.show();
+	}
+
+	public static void main(String[] args)
+	{
+		AddTwoNode List1 = new AddTwoNode();
+		AddTwoNode List2 = new AddTwoNode();
+		AddTwoNode List3= new AddTwoNode();
+
+		List1.add(1);
+		List1.add(8);
+		List1.add(8);
+
+		System.out.println("List 1 :");
+		List1.show();
+
+		System.out.println(" ");
+		List2.add(1);
+		List2.add(2);
+		List2.add(2);
+
+		System.out.println("List 2: ");
+		List2.show();	
+
+		List3.addBoth(List1,List2,List3);
+		List3.addCarry(List1,List2,List3);
+
+	}
+	
+}

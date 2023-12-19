@@ -1,0 +1,53 @@
+package leetcode;
+
+import java.util.Arrays;
+
+public class PrefixSort {
+
+	public void Prefix(String[] st) {
+		boolean checkWord=false;
+		boolean checkPrefix=false;
+		int size=st.length;
+		int stt=0;
+		char[][] sm=new char[6][size];
+		stt = st.length;
+		System.out.println(st[1].charAt(1));
+		for(int i=0;i<stt;i++) {
+
+		}
+	}
+
+	public void longestCommonPrefix(String[] strs) {
+		int size = strs.length;  
+		for(int i = 0; i<size-1; i++) {  
+			for (int j = i+1; j<strs.length; j++) {  
+				if(strs[i]==strs[j]) {  
+					String temp = strs[i];  
+					strs[i] = strs[j];  
+					strs[j] = temp;  
+				}  
+			}  
+			System.out.println(Arrays.toString(strs)); 
+		}  
+	}
+	String s1 = strs[0];
+	String s2 = strs[strs.length-1];
+	int id = 0;
+	while(id < s1.length() && id < s2.length()){
+		if(s1.charAt(id) == s2.charAt(id)){
+			id++;
+		} else {
+			break;
+		}
+	}
+	System.out.println(s1.substring(0, id));
+}
+public static void main(String[] args) {
+	String[] s1= {"floa","flop","flower"};
+
+	PrefixSort s = new PrefixSort();
+	//	s.Prefix(s1);
+	s.longestCommonPrefix(s1);
+
+}
+}

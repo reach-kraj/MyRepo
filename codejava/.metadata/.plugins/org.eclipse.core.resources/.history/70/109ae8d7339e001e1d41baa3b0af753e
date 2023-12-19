@@ -1,0 +1,14 @@
+package leetcode;
+
+public class GroupAnagrams {
+	public void group(String[] s1) {
+		
+	}
+
+	public static void main(String[] args) {
+		String[] strs = {"eat","tea","tan","ate","nat","bat"};
+		GroupAnagrams g1=new GroupAnagrams();
+		g1.group(strs);
+	}
+
+}

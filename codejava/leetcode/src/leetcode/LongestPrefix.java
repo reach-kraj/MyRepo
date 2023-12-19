@@ -25,7 +25,7 @@ public class LongestPrefix {
 	}
 	
 	public static void main(String[] args) {
-		String[] s1= {"flower","flow","flop"};
+		String[] s1= {"flower","flow"};
 		
 	LongestPrefix s = new LongestPrefix();
 	s.Prefix(s1);
