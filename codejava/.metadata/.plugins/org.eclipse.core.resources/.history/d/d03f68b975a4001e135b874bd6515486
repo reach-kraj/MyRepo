@@ -1,0 +1,85 @@
+package leetcode;
+
+
+public class DeleteDuplicate {
+	
+	class Node 
+	{
+		private int data;
+		private Node next;
+
+		public Node getNext() {
+			return next;
+		}
+		public void setNext(Node next) {
+			this.next = next;
+		}
+		public int getData() {
+			return data;
+		}
+		public void setData(int data) {
+			this.data = data;
+		}
+	}
+	Node head;
+
+	public void add(int data) {
+		Node container = new Node();
+		container.setData(data);
+		if (head == null) {
+			head = container;
+		} else {
+			Node tempNode = head;
+			while (tempNode.getNext()!= null) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(container);
+		}
+	}
+
+	public void show() {
+		Node container = head;
+		if(container==null) {
+			System.out.println("list is empty");
+		}else {
+			while (container.getNext() != null) {
+				System.out.print(container.getData()+" ");
+				container = container.getNext();
+			}
+			System.out.print(container.getData()+" ");
+		}
+	}
+	
+	  public Node deleteDuplicates(Node head) {
+	        if(head == null || head.next == null) return  head;
+
+	        Node temp1 = head;
+	        Node temp2 = head.next;
+
+	        while(temp2 != null) {
+	            if(temp1.getData() == temp2.getData()) {
+	                temp1.next = temp2.next;
+	                temp2 = temp2.next;
+	            } else {
+	                temp1 = temp2;
+	                temp2 = temp2.next;
+	            }
+	        }
+	public static void main(String[] args) {
+
+		DeleteDuplicate l1 =new DeleteDuplicate();
+
+		l1.add(50);
+		l1.add(30);
+		l1.add(40);
+		l1.add(70);
+		l1.add(90);
+
+		l1.deleteDuplicates(l1);
+		l1.show();
+
+		
+		
+	}
+
+}

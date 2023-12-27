@@ -1,0 +1,107 @@
+package leetcode;
+
+public class SortList {
+	public class ListNode {
+		int val;
+		ListNode next;
+		ListNode() {}
+		ListNode(int val) { this.val = val; }
+		ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+	}
+	ListNode head;
+	public void add(int val) {
+		ListNode container = new ListNode();
+		container.val=val;
+		if (head == null) {
+			head = container;
+		} else {
+			ListNode tempNode = head;
+			while (tempNode.getNext()!= null) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(container);
+		}
+	}
+
+	public void show() {
+		Node container = head;
+		if(container==null) {
+			System.out.println("list is empty");
+		}else {
+			while (container.getNext() != null) {
+				System.out.print(container.getData()+" ");
+				container = container.getNext();
+			}
+			System.out.print(container.getData()+" ");
+		}
+	}
+
+	public SortList sortNode(SortList n1) {
+
+		Node temp=head;
+		Node slow=temp.next;
+		Node fast=slow.next;
+		Node mid=temp.next;
+
+		if(temp.getData()>slow.getData()) {
+			head=slow;
+			slow.next=temp;
+			temp.next=fast;
+
+			mid=temp;
+			temp=slow;
+			slow=mid;
+		}else {
+			temp=slow;
+			slow.next=fast;
+			fast=fast.next;
+		}
+		while(fast.next!=null) {
+			if(slow==mid) {
+				temp=slow;
+				slow=fast;
+				fast=fast.next;
+			}else {
+				temp=slow;
+				slow=fast;
+			}
+			if(temp.getData()>slow.getData()) {
+				mid=slow;
+				slow.next=temp;
+				temp.next=fast;
+
+				mid=temp;
+				temp=slow;
+				slow=mid;
+
+			}else {
+				temp=slow;
+				slow.next=fast;
+				fast=fast.next;
+			}
+		}
+		return n1;
+
+	}
+
+
+
+
+	public static void main(String[] args) {
+
+		SortList l1=new SortList();
+		//SortList l2=new SortList();
+
+		l1.add(50);
+		l1.add(30);
+		l1.add(40);
+		l1.add(90);
+		l1.add(70);
+		l1.show();
+		System.out.println("after");
+		System.out.println(" ");
+		l1.sortNode(l1);
+		l1.show();
+	}
+
+}

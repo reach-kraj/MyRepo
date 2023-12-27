@@ -42,7 +42,6 @@ public class ReshapeMatrix {
 
 		int r=1,c=6;
 
-
 		int a = mat.length;
 		int b = mat[0].length;
 		System.out.println("Before reshape: " );

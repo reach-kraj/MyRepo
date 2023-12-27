@@ -83,7 +83,7 @@ public class RemoveNthNode {
 	public static void main(String[] args) {
 		RemoveNthNode n1=new RemoveNthNode();
 
-		int n=6;
+		int n=5;
 
 		n1.add(10);
 		n1.add(20);

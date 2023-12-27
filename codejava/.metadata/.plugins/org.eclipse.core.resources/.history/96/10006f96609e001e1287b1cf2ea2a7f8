@@ -1,8 +1,0 @@
-package javacode;
-
-public class CommandLineArgs {
-	public static void main(String[] args) {
-		String[] city= {"chennai","Pune","Mumbai"};
-		System.out.println(city);
-	}
-}
