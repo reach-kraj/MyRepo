@@ -8,6 +8,7 @@ public class Manager extends Employee {
 		 System.out.println("Bonus for the Employee is: "+bonus);
 	 }
 	 public void displayInfo() {
+	      super.displayInfo();
 	      System.out.println("Manager of So and so company");
 	 }
 	public static void main(String[] args) {
