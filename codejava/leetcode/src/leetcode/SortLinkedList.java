@@ -106,7 +106,6 @@ public class SortLinkedList {
 	public static void main(String[] args) {
 
 		SortLinkedList l1 =new SortLinkedList();
-		//SortLinkedList l2 =new SortLinkedList();
 
 		l1.add(50);
 		l1.add(30);
@@ -116,8 +115,5 @@ public class SortLinkedList {
 
 		l1.sorted();
 		l1.show();
-
-
-
 	}
 }

@@ -7,6 +7,7 @@ public class DeleteDuplicate {
 	{
 		private int data;
 		private Node next;
+	//	private Node previous;
 
 		public Node getNext() {
 			return next;
@@ -69,6 +70,7 @@ public class DeleteDuplicate {
 		}
 		return head;
 	}
+
 	public static void main(String[] args) {
 
 		DeleteDuplicate l1 =new DeleteDuplicate();
@@ -80,8 +82,10 @@ public class DeleteDuplicate {
 		l1.add(70);
 		l1.add(90);
 
+		System.out.println("Before Deleting Duplicate: ");
 		l1.show();
 		System.out.println(" ");
+		System.out.println("After Deleting Duplicate: ");
 		l1.deleteDuplicates();
 		l1.show();
 

@@ -1,0 +1,15 @@
+package javacode;
+
+
+public class Manager extends Employee {
+	
+	 public void bonus() {
+		 int bonus=2000;
+		 System.out.println("Bonus is: "+bonus);
+	 }
+	public static void main(String[] args) {
+		Manager c1 =new Manager();
+		c1.salary();
+		c1.bonus();
+	}
+}
