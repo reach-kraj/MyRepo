@@ -1,6 +1,6 @@
 package oppConcept;
 
-public class OverLoading extends Polymorphism {
+public class OverLoading {
 	private void display(int a){
 		System.out.println("Arguments: " + a);
 	}
@@ -13,7 +13,6 @@ public class OverLoading extends Polymorphism {
 
 	public static void main(String[] args) {
 		OverLoading l1=new OverLoading();
-		l1.display();
 		l1.display(1);
 		l1.display("124cc");
 		l1.display(1.25, 4.25);

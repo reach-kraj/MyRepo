@@ -24,6 +24,14 @@ public class Engine {
 		private String engineCc;
 		private String enginePower;
 
+		public void carDetails(String name,int noOfTyre,String engineType,String engineCc,String enginePower) {
+			
 
+			System.out.println("Make: "+name);
+			System.out.println("No of Tyre: "+noOfTyre);
+			System.out.println("Engine Type: "+engineType);
+			System.out.println("Engine Cc: "+engineCc);
+			System.out.println("Engine Power: "+enginePower);
+}
 }
 

@@ -1,0 +1,9 @@
+package oppConcept;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Car c1=new carDetails("BMW",4,"v8","800cc","10hp");
+	}
+
+}
