@@ -1,6 +1,10 @@
 package oppConcept;
 
 public class OverLoading extends Polymorphism {
+
+	public void display(){
+		System.out.println("example of overridding");
+	}
 	private void display(int a){
 		System.out.println("Arguments: " + a);
 	}

@@ -1,7 +1,7 @@
 package oppConcept;
 
 public class Polymorphism {
-	protected void display(){
+	public void display(){
 		System.out.println("example of polymorphism");
 	}
 }
