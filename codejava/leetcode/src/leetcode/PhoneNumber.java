@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PhoneNumber {
-	public List<String> letterCombinations(String digits) {
+	public List<String>letterCombinations(String digits) {
 		HashMap<Character, String> map = new HashMap<>();
 
 		map.put('2', "abc");
@@ -30,7 +30,7 @@ public class PhoneNumber {
 
 			return letter;
 		}
-		if (digits.length() == 1 && map.get(digits.charAt(0)).length() == 4) {
+		else if (digits.length() == 1 && map.get(digits.charAt(0)).length() == 4) {
 			letter.add(Character.toString(map.get(digits.charAt(0)).charAt(0)));
 			letter.add(Character.toString(map.get(digits.charAt(0)).charAt(1)));
 			letter.add(Character.toString(map.get(digits.charAt(0)).charAt(2)));

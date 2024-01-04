@@ -3,7 +3,7 @@ package leetcode;
 public class PasswordChecker {
 	public static void main(String[] args) {
 
-		String password = "qe8po";
+		String password = "qepop@";
 		String num= "1234567890";
 		String sym="@#*&_.+=";
 

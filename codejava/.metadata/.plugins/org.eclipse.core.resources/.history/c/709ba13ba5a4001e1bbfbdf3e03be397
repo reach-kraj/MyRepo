@@ -1,9 +1,0 @@
-package leetcode;
-//https://leetcode.com/problems/swap-nodes-in-pairs/
-public class SwapNode {
-
-	public static void main(String[] args) {
-
-	}
-
-}
