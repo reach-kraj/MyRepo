@@ -1,0 +1,24 @@
+package javacode;
+
+class InvalidData extends Exception{
+
+
+
+}
+
+public class Account {
+
+	public void salaryCheck(double salary)throws(InvalidData) {
+		try{
+			throw InvalidData();
+		}
+		catch(InvalidData e){
+			System.out.println("Please enter valid number");
+		}
+	}
+	public static void main(String[] args) {
+		double salary=30000.78;
+
+	}
+
+}

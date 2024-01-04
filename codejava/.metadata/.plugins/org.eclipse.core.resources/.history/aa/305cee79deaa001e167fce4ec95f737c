@@ -1,0 +1,15 @@
+package javacode;
+class InvalidData extends Exception{
+	
+}
+
+public class Account {
+
+	public void salaryCheck() {
+		
+	}
+	public static void main(String[] args) {
+		
+	}
+	
+}

@@ -28,7 +28,7 @@ public class SudokoSolver {
 		}
 		return true;
 	}
-	
+
 	public void print(int[][] board) {
 		for(int i=0;i<9;i++) {
 			System.out.print(board[i][0]+" ");	
@@ -39,8 +39,8 @@ public class SudokoSolver {
 			System.out.print(board[i][5]+" ");	
 			System.out.print(board[i][6]+" ");	
 			System.out.print(board[i][7]+" ");	
-			System.out.print(board[i][8]+" ");	
-			System.out.println(" ");	
+			System.out.print(board[i][8]+" "); 
+			System.out.println(" "); 
 		}
 	}
 	public static void main(String[] args) {
