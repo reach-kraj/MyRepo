@@ -1,7 +1,0 @@
-package oppConcept;
-
-public class Polymorphism {
-	private void display(){
-		System.out.println("example of polymorphism");
-	}
-}

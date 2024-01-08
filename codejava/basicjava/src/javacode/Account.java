@@ -2,9 +2,9 @@ package javacode;
 
 import java.util.Arrays;
 
+//InvalidDataException is a custom error class 
+//Always custom exp class should extends to other exp child class or exception parent class
 class InvalidDataException extends Exception{
-	//invalidDataException is a custom error class 
-	//always custom exp class should extends to other exp child class or exception parent class
 	public  InvalidDataException(String message) {
 		//to call the given string from error method @InvalidDataException "super" keyword is used
 		super(message);
@@ -15,24 +15,22 @@ public class Account {
 	//method has to throws the Exception class
 	public void salaryCheck(double salary)throws InvalidDataException {
 		if(salary<0) {
-			//predicting the error and throwing it  
-			throw new InvalidDataException("Invalid");
+			throw new InvalidDataException("Invalid");//predicting the error and throwing it
 		}else {
-			//Else block run if input is valid
-			System.out.println("Salary is: "+salary);
+			System.out.println("Salary is: "+salary);//Else block run if input is valid
 		}
 	}
 	public static void main(String[] args)  {
 		double salary=-30000.78;//(-)error value
 		Account a1=new Account();
 		try {
-			//the code could contain error is mentioned in try 
-			a1.salaryCheck(salary);
+			a1.salaryCheck(salary);//the code could contain error is mentioned in try
 		}
 		catch(InvalidDataException e) {
-			//handling the error
-			System.out.println("Please enter valid number: error "+e);
+			e.printStackTrace();
+			System.out.println("Please enter valid number: error "+e);//handling the error
 		}
+
 		//sample code to confirm that error has been handled perfectly
 		int[] a = {1,2,3,4,5,6} ;
 		int n = a.length;
@@ -51,4 +49,3 @@ public class Account {
 		System.out.print("Final Array : " + Arrays.toString(b));
 	}	
 }
-

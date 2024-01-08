@@ -1,0 +1,11 @@
+package leetcode;
+
+import java.util.Arrays;
+
+public class Dupli {
+
+	public static void main(String[] args) {
+
+		String[] s1= {"chennai","london","delhi","mumbai","mumbai","london"};
+		
+}

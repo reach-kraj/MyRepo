@@ -1,0 +1,6 @@
+package javacode;
+
+class Multithreading extends thread {
+	
+	
+}

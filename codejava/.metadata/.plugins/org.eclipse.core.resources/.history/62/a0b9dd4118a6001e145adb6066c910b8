@@ -1,8 +1,0 @@
-package javacode;
-
-public class Engine {
-
-		private String engineType;
-		private int engineCc;
-		private int enginePower;
-}

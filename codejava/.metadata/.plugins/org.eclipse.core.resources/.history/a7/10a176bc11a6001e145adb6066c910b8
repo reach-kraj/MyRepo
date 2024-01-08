@@ -1,9 +1,0 @@
-package javacode;
-
-public class Employee {
-		
-		public void salary() {
-			int salary=20000;
-			System.out.println("Salary is: "+salary);
-		}
-}

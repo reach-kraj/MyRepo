@@ -1,0 +1,11 @@
+package javacode;
+
+public class IrctcLogin extends Thread {
+
+	public void run() {
+		System.out.println("Logging in User");
+	}
+	public void LoginDetails() {
+		System.out.println("Enter Name of the user");
+	}
+}

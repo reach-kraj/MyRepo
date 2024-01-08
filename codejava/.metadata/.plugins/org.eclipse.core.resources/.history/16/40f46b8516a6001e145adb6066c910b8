@@ -1,9 +1,0 @@
-package javacode;
-
-public class Person {
-	
-	public Person(){
-        Job job=new Job();
-        job.setSalary(40000);
-    }
-}

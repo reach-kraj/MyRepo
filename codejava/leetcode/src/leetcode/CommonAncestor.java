@@ -82,6 +82,6 @@ public class CommonAncestor {
 		t1.addTree(15);
 		t1.addTree(6);
 
-		t1.ancestor(5,12);
+		t1.ancestor(6,7);
 	}
 }

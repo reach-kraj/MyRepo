@@ -1,0 +1,8 @@
+package javacode;
+
+public class IrctcLogin{
+	public void LoginDetails() {
+		System.out.println("Logging in User");
+		System.out.println("Enter Name of the user");
+	}
+}
