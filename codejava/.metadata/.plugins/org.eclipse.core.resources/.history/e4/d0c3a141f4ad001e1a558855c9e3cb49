@@ -1,0 +1,22 @@
+package javacode;
+
+public class Thread2 extends Thread {
+IrctcLogin l2;
+	
+	Thread2(IrctcLogin l2){
+		this.l2=l2;
+	}
+	public void run() {
+		String username="user2";
+		String password="qwerty12345";
+		String src="Egmore";
+		String dst="Villupuram";
+		String payment="DebitCard";
+		l2.loginDetails(username,password);
+		l2.selectTrain(src,dst);
+		l2.checkAvailability();
+		l2.paymentGateway(payment);
+		l2.transcation();
+		l2.pnrGeneration(username);
+	}
+}

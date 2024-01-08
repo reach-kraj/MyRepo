@@ -1,0 +1,41 @@
+package javacode;
+
+public class Thread2 extends Thread {
+	public void run() {
+		Thread2 s2=new Thread2();
+		String username="User1";
+		String password ="12345qwerty";
+		String source="villupuram";
+		String destination="Egmore";
+		String payment="UPI";
+		s2.loginDetails2(username,password);
+		s2.selectTrain2(source,destination);
+		s2.checkAvailability2();
+		s2.paymentGateway2(payment);
+		s2.transcation2();
+		s2.pnrGeneration2(username);
+	}
+	public void loginDetails2(String name,String name1) {
+		System.out.println("Thread2 Please Enter userName: "+name);
+		System.out.println("Thread2 Please Enter Password: "+name1);
+		System.out.println("Thread2 Logging in User");
+	}
+	public void selectTrain2(String name,String name1) {
+		System.out.println("Thread2 Enter Your Source: "+name);
+		System.out.println("Thread2 Destination Station: "+name1);
+		System.out.println("Thread2 Kindly Select Train from the List");
+	}
+	public void checkAvailability2() {
+		System.out.println("Thread2 Select No of Seat");
+		System.out.println("Thread2 Enter Passanger Details");
+	}
+	public void paymentGateway2(String payment) {
+		System.out.println("Thread2 UPI, NetBanking, DebitCard,CreditCard: "+payment);
+	}
+	public void transcation2() {
+		System.out.println("Thread2 Payment Sucessfull");
+	}
+	public void pnrGeneration2(String name) {
+		System.out.println("Thread2 478964467 Pnr for "+name);
+	}
+}

@@ -18,7 +18,7 @@ public class RemoveDuplicate {
 		            i++;
 		        } while (i < country.size());
 
-		        System.out.println("Unique strings list: " + NewList);
+		        System.out.println("list without Duplicate: " + NewList);
 	}
 	public static void main(String[] args) {
 		ArrayList<String> country = new ArrayList<String>();
@@ -27,7 +27,6 @@ public class RemoveDuplicate {
 		country.add("London");
 		country.add("America");
 		country.add("India");
-		country.add("Italy");
 		country.add("America");
 		RemoveDuplicate r1=new RemoveDuplicate();
 		r1.removeDupli(country);

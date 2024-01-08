@@ -1,0 +1,17 @@
+package javacode;
+
+public class Thread2 extends Thread {
+IrctcLogin l2;
+	
+	Thread2(IrctcLogin l2){
+		this.l2=l2;
+	}
+	public void run() {
+		l2.loginDetails();
+		l2.selectTrain();
+		l2.checkAvailability();
+		l2.paymentGateway();
+		l2.transcation();
+		l2.pnrGeneration();
+	}
+}

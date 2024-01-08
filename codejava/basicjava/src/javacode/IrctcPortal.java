@@ -1,18 +1,12 @@
 package javacode;
 
-public class IrctcPortal extends Thread {
+public class IrctcPortal{
 	
-	public void run() {
-		IrctcLogin s1=new IrctcLogin();
-		s1.LoginDetails("User");
-		
-	}
-
 	public static void main(String[] args) {
-		IrctcPortal user1=new IrctcPortal();
-		IrctcPortal user2=new IrctcPortal();
-		
-		user1.start();
-		user2.start();
+		IrctcLogin obj = new IrctcLogin(); 
+		Thread1 t1=new Thread1(obj);  
+		Thread2 t2=new Thread2(obj);
+		t1.start();
+		t2.start();
 	}
 }

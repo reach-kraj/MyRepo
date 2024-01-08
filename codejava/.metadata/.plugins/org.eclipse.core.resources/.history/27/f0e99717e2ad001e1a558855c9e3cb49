@@ -1,0 +1,5 @@
+package javacode;
+
+public class Thread2 extends Thread {
+
+}

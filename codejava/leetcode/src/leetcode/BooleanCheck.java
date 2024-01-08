@@ -1,5 +1,6 @@
 package leetcode;
 
+
 public class BooleanCheck {
 	public static void main(String[] args) {
 		String s1 = "AaBb";//true
