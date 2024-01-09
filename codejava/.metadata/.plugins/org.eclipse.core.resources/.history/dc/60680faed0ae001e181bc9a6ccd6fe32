@@ -1,0 +1,52 @@
+package threadconcept;
+
+import java.lang.*; 
+
+class NewThread extends Thread { 
+	IrctcLogin l1;
+	NewThread(String threadname, ThreadGroup tgob,IrctcLogin l1) 
+	{ 
+		super(tgob, threadname); 
+		this.l1=l1;
+		start(); 
+	} 
+	public void run() 
+	{ 
+		String thread="Thread1";
+		String username="user1";
+		String password="1q2w3e4r5t6y";
+		String src="Villupuram";
+		String dst="Egmore";
+		String payment="UPI";
+		l1.loginDetails(thread,username,password);
+		try { 
+			Thread.sleep(3000);
+		} catch (InterruptedException e) { 
+			e.printStackTrace(); 
+		}
+		l1.selectTrain(thread,src,dst);
+		l1.checkAvailability(thread);
+		l1.paymentGateway(thread,payment);
+		l1.transcation(thread);
+		l1.pnrGeneration(thread,username);
+
+	}
+}
+public class ThreadGroupConcept 
+{ 
+	public static void main(String arg[]) throws InterruptedException, 
+	SecurityException 
+	{ 
+		ThreadGroup gfg = new ThreadGroup("Parent thread"); 
+
+		IrctcLogin obj = new IrctcLogin();
+		NewThread t1 = new NewThread("one", gfg,obj); 
+		System.out.println("Starting one"); 
+		NewThread t2 = new NewThread("two", gfg,obj); 
+		System.out.println("Starting two"); 
+
+		System.out.println("No of active Thread: "+gfg.activeCount());
+		System.out.println("No of active GroupThread: "+gfg.activeGroupCount());
+	} 
+} 
+

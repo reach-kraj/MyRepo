@@ -1,0 +1,49 @@
+package threadconcept;
+
+public class IrctcLogin{
+
+	public void loginDetails(String thread,String name,String name1) {
+		System.out.println(thread+" Please Enter UserName: "+name);
+		System.out.println(thread+" Please Enter Password: "+name1);
+	}
+	public void selectTrain(String thread,String src,String dst) {
+		System.out.println(thread+" Logging in");
+		System.out.println(thread+" Enter Your Source: "+src);
+		System.out.println(thread+" Enter Your Destination Station: "+dst);
+		System.out.println(thread+" Kindly Select Train from the List");
+	}
+	public  void checkAvailability(String thread) {
+		System.out.println(thread+" Select No of Seat");
+		System.out.println(thread+" Enter Passanger Details");
+	}
+	public  void paymentGateway(String thread,String payment) {
+		System.out.println(thread+" UPI, 2.NetBanking, 3.DebitCard,4.CreditCard: "+payment);
+	}
+	public void transcation(String thread) {
+		System.out.println(thread+" Payment Sucessfull");
+	}
+	public void pnrGeneration(String thread,String name) {
+		System.out.println(thread+" Pnr for: "+name);
+	}
+
+}
+
+//synchronized example 
+
+//public class IrctcLogin{
+//	
+//	synchronized  void loginDetails(String thread,String name,String name1,String src,String dst,String payment) {
+//		System.out.println(thread+" Please Enter UserName: "+name);
+//		System.out.println(thread+" Please Enter Password: "+name1);
+//		System.out.println(thread+" Logging in");
+//		System.out.println(thread+" Enter Your Source: "+src);
+//		System.out.println(thread+" Enter Your Destination Station: "+dst);
+//		System.out.println(thread+" Kindly Select Train from the List");
+//		System.out.println(thread+" Select No of Seat");
+//		System.out.println(thread+" Enter Passanger Details");
+//		System.out.println(thread+" UPI, 2.NetBanking, 3.DebitCard,4.CreditCard: "+payment);
+//		System.out.println(thread+" Payment Sucessfull");
+//		System.out.println(thread+" Pnr for: "+name);
+//	}
+//	}
+

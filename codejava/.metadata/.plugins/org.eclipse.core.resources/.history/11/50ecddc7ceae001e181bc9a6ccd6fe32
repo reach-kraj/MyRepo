@@ -1,0 +1,47 @@
+package threadconcept;
+
+import java.lang.*; 
+
+class NewThread extends Thread 
+{ 
+	NewThread(String threadname, ThreadGroup tgob) 
+	{ 
+		super(tgob, threadname); 
+		start(); 
+	} 
+public void run() 
+	{ 
+
+		for (int i = 0; i < 10; i++) 
+		{ 
+			try
+			{ 
+				Thread.sleep(100); 
+			} 
+			catch (InterruptedException ex) { 
+				System.out.println("Exception encounterted"); 
+			} 
+		} 
+		System.out.println(Thread.currentThread().getName() + 
+			" finished executing"); 
+	} 
+} 
+public class ThreadGroupConcept 
+{ 
+	public static void main(String arg[]) throws InterruptedException, 
+		SecurityException 
+	{ 
+		ThreadGroup gfg = new ThreadGroup("Parent thread"); 
+
+		ThreadGroup gfg_child = new ThreadGroup(gfg, "child thread"); 
+
+		NewThread t1 = new NewThread("one", gfg); 
+		System.out.println("Starting one"); 
+		NewThread t2 = new NewThread("two", gfg); 
+		System.out.println("Starting two"); 
+
+		System.out.println("No of active Thread: "+gfg.activeCount());
+		System.out.println("No of active GroupThread: "+gfg.activeGroupCount());
+	} 
+} 
+

@@ -1,0 +1,9 @@
+package threadconcept;
+
+public class ThreadGroup1 {
+	IrctcLogin l3;
+	ThreadGroup1(ThreadGroup tg,IrctcLogin l3){
+		this.l3=l3;
+		start();
+	}
+}

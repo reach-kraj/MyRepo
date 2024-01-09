@@ -1,0 +1,10 @@
+package threadconcept;
+
+public class ThreadGroup2 extends Thread {
+	IrctcLogin l4;
+	ThreadGroup2(ThreadGroup tg,IrctcLogin l4){
+		this.l4=l4;
+		
+	}
+	
+}

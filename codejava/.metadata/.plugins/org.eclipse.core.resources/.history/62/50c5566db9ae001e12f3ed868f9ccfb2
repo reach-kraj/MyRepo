@@ -1,0 +1,11 @@
+package threadconcept;
+
+public class ThreadGroupConcept {
+	public static void main(String[] args) {
+		ThreadGroup tg=new ThreadGroup("Parent");
+		IrctcLogin obj = new IrctcLogin(); 
+		
+		
+		System.out.println("The total number of active threads are: " + tg.activeCount()); 
+	}
+}

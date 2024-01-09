@@ -1,0 +1,28 @@
+package threadconcept;
+
+public class ThreadGroup1 extends Thread {
+	IrctcLogin l3;
+	ThreadGroup1(ThreadGroup tg,IrctcLogin l3){
+		this.l3=l3;
+		start();
+	}
+	public void run() {
+		String thread="Thread1";
+		String username="user1";
+		String password="1q2w3e4r5t6y";
+		String src="Villupuram";
+		String dst="Egmore";
+		String payment="UPI";
+		l3.loginDetails(thread,username,password);
+		 try { 
+            Thread.sleep(3000);
+        } catch (InterruptedException e) { 
+            e.printStackTrace(); 
+        }
+		l3.selectTrain(thread,src,dst);
+		l3.checkAvailability(thread);
+		l3.paymentGateway(thread,payment);
+		l3.transcation(thread);
+		l3.pnrGeneration(thread,username);
+	}
+}
