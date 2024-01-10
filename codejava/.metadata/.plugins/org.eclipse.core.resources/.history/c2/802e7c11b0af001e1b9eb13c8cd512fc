@@ -1,5 +1,4 @@
 package threadconcept;
-class IrctcLogin{
 	public void loginDetails(String thread,String name,String name1) {
 		System.out.println(thread+" Please Enter UserName: "+name);
 		System.out.println(thread+" Please Enter Password: "+name1);
@@ -84,6 +83,7 @@ class Thread2 extends Thread {
 public class IrctcPortal{
 
 	public static void main(String[] args) {
+		System s=new System();
 		IrctcLogin obj = new IrctcLogin(); 
 		Thread1 t1=new Thread1(obj);  
 		Thread2 t2=new Thread2(obj);

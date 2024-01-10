@@ -1,5 +1,4 @@
 package threadconcept;
-class IrctcLogin{
 	public void loginDetails(String thread,String name,String name1) {
 		System.out.println(thread+" Please Enter UserName: "+name);
 		System.out.println(thread+" Please Enter Password: "+name1);

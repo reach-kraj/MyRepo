@@ -1,4 +1,5 @@
 package threadconcept;
+
 class IrctcLogin{
 	public void loginDetails(String thread,String name,String name1) {
 		System.out.println(thread+" Please Enter UserName: "+name);
@@ -68,11 +69,11 @@ class Thread2 extends Thread {
 		String dst="Villupuram";
 		String payment="DebitCard";
 		l2.loginDetails(thread,username,password);
-//		try { 
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) { 
-//			e.printStackTrace(); 
-//		}
+		try { 
+			Thread.sleep(3000);
+		} catch (InterruptedException e) { 
+			e.printStackTrace(); 
+		}
 		l2.selectTrain(thread,src,dst);
 		l2.checkAvailability(thread);
 		l2.paymentGateway(thread,payment);

@@ -1,0 +1,31 @@
+package threadconcept;
+class NewThread extends Thread {
+
+	private static int question = 15;
+	  private static ThreadLocal<Object> gfg = new ThreadLocal<Object>() {
+	        protected Object initialValue()
+	        {
+	        	question--;
+	            return question;
+	        }
+	    };	
+	NewThread(String name)
+	{
+		super(name);
+		start();
+	}
+
+	public void run()
+	{
+		for (int i = 0; i < 5; i++)
+		System.out.println(getName() + " " + gfg.get());
+	}
+}
+public class ThreadLocalConcept {
+
+	public static void main(String[] args) {
+		NewThread t1 = new NewThread("Thread1");
+		NewThread t2 = new NewThread("Thread2");
+	}
+
+}
