@@ -1,0 +1,9 @@
+package predefinedjavaclass;
+
+public class HashmapConcept {
+
+	public static void main(String[] args) {
+Hashmap<string,Integer> cars=new Hashmap<>();
+	}
+
+}

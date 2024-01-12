@@ -72,5 +72,4 @@ public class ThreadLocalConcept {
 		NewThread t1 = new NewThread("Thread1",obj);
 		NewThread t2 = new NewThread("Thread2",obj);
 	}
-
 }

@@ -1,0 +1,20 @@
+package predefinedjavaclass;
+
+
+public class ArrayListConcept {
+
+	public static void main(String[] args) {
+		java.util.ArrayList<String> cars = new java.util.ArrayList<String>();
+		cars.add("Volvo");
+	    cars.add("BMW");
+	    cars.add("Ford");
+	    cars.add("Mazda");
+	    cars.remove(2);
+	    java.util.Iterator<String> it = cars.iterator();
+	    while(it.hasNext()) {
+	    System.out.println("Example of Iterator "+it.next());
+	    }
+	    System.out.println("To check arraylist is empty "+cars.isEmpty());
+	    System.out.println(cars);
+	}
+}
