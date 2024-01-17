@@ -1,0 +1,7 @@
+package predefinedjavaclass;
+
+import java.util.LinkedHashSet;
+
+public class LinkedHashMapConcept {
+	
+}

@@ -1,0 +1,29 @@
+package predefinedjavaclass;
+
+import java.util.TreeMap;
+
+public class TreeMapConcept {
+	public static void main(String args[])
+    {
+        // Initialization of a TreeMap
+        // using Generics
+        TreeMap<Integer, String> tm
+            = new TreeMap<Integer, String>();
+ 
+        // Inserting the elements
+        // using put() method
+        tm.put(3, "Geeks");
+        tm.put(2, "Geeks");
+        tm.put(1, "Geeks");
+        tm.put(4, "For");
+ 
+        // Printing all elements of Map
+        System.out.println(tm);
+ 
+        // Removing the element corresponding to key
+        tm.remove(4);
+ 
+        //  Printing updated TreeMap
+        System.out.println(tm);
+    }
+}
