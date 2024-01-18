@@ -1,9 +1,0 @@
-package predefinedjavaclass;
-
-public class LinkedListConcept {
-
-	public static void main(String[] args) {
-
-	}
-
-}

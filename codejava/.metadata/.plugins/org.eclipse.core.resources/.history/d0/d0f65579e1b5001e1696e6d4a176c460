@@ -1,0 +1,28 @@
+package predefinedjavaclass;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileHandling {
+	
+	public static void main(String[] args) throws IOException {
+		FileWriter newFile = new FileWriter("G:\\temp\\New Text Document.java");
+
+		// Read the existing file line by line.
+		BufferedReader reader = new BufferedReader(new FileReader("G:\\Code\\BooleanCheck.java"));
+		String line;
+		while ((line = reader.readLine()) != null) {
+			newFile.write("success");
+		}
+	}
+
+	// Close both files.
+	reader.close();
+	newFile.close();
+}
+

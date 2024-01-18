@@ -1,0 +1,14 @@
+package predefinedjavaclass;
+
+import java.io.File;
+public class FileHandling {
+
+	class GFG {
+		public static void main(String[] args)
+		{
+			File obj = new File("G:\\Code\\myfile.txt");
+			System.out.println("File Created!");
+		}
+	}
+
+}

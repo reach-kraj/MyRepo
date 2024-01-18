@@ -1,0 +1,41 @@
+package predefinedjavaclass;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileContentTransfer {
+
+	public static void main(String[] args)
+			throws IOException
+	{
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+
+		try {
+			fis = new FileInputStream("G:\\Code\\BooleanCheck.java");
+			fos = new FileOutputStream("G:\\temp\\New Text Document.java");
+			int c;
+			while ((c=fis.read())!= -1) {
+				fos.write(c);
+			}
+		}
+		finally {
+			System.out.println("copied the file successfully");
+			fis.close();
+			fos.close();
+		}
+		try {
+			char[] l=new char[1];
+			l[0]='success';
+			FileWriter myWriter = new FileWriter("G:\\temp\\New Text Document.java");
+			myWriter.write(l);
+			myWriter.close();
+			System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,19 @@
+package predefinedjavaclass;
+
+import java.io.File;
+import java.io.IOException;
+public class FileHandling {
+
+	class GFG {
+		public static void main(String[] args) throws IOException
+		{
+			File obj = new File("G:\\Code\\myfile.txt");
+			if(obj.createNewFile()) {
+				System.out.println("File Created!");
+			}else {
+				System.out.println("File not Created!");
+			}
+		}
+	}
+
+}

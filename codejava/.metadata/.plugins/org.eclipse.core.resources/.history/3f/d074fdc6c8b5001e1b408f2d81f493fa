@@ -1,0 +1,19 @@
+package predefinedjavaclass;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
+public class FolderTransfer {
+	Path source = Paths.get("/path/to/source/file.txt");
+	Path target = Paths.get("/path/to/target/file.txt");
+
+	try {
+	  Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
+	} catch (IOException e) {
+	  e.printStackTrace();
+	}
+}
+}

@@ -1,0 +1,78 @@
+package predefinedjavaclass;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+
+import oppConcept.Employee;
+
+public class CsvFileRead {
+	private String id;
+	private String name;
+	private String age;
+	private String country;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "{" + id + "::" + name + "::" + age + "::" + country + "}";
+	}
+}
+
+class OpenCSVReaderLineByLineExample {
+
+	public static void main(String[] args) throws IOException {
+
+		CSVReader reader = new CSVReader(new FileReader("G:\\testCsv.csv"), ',');
+
+		List<Employee> emps = new ArrayList<Employee>();
+
+		// read line by line
+		String[] record = null;
+
+		while ((record = reader.readNext()) != null) {
+			Employee emp = new Employee();
+			emp.setId(record[0]);
+			emp.setName(record[1]);
+			emp.setAge(record[2]);
+			emp.setCountry(record[3]);
+			emps.add(emp);
+		}
+
+		System.out.println(emps);
+		
+		reader.close();
+	}
+
+}
