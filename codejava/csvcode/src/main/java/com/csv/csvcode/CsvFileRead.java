@@ -1,12 +1,11 @@
-package predefinedjavaclass;
+package com.csv.csvcode;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import oppConcept.Employee;
+
+import com.opencsv.CSVWriter;
+
 
 public class CsvFileRead {
 	public static void writeDataLineByLine(String filePath) 
@@ -20,7 +19,7 @@ public class CsvFileRead {
 	  
 	        String[] data1 = { "Aman", "10", "620" }; 
 	        writer.writeNext(data1); 
-	        String[] data2 = { "Suraj", "10", "630" }; 
+	        String[] data2 = { "Suraj", "20", "630" }; 
 	        writer.writeNext(data2); 
 	  
 	        writer.close(); 
@@ -31,5 +30,6 @@ public class CsvFileRead {
 	}
 	public static void main(String[] args) {
 		String path="G:\\testCsv.csv";
+		CsvFileRead.writeDataLineByLine(path);
 	}
 }
