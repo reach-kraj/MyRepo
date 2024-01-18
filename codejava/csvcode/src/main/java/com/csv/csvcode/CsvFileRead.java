@@ -14,13 +14,13 @@ public class CsvFileRead {
 	    try { 
 	        FileWriter outputfile = new FileWriter(file); 
 	        CSVWriter writer = new CSVWriter(outputfile); 
-	        String[] header = { "Name", "Class", "Marks" }; 
-	        writer.writeNext(header); 
 	  
-	        String[] data1 = { "Aman", "10", "620" }; 
+	        String[] data1 = { "1", "Pankaj Kumar", "20","India" }; 
 	        writer.writeNext(data1); 
-	        String[] data2 = { "Suraj", "20", "630" }; 
+	        String[] data2 = { "2", "David dan", "40","USA" }; 
 	        writer.writeNext(data2); 
+	        String[] data3 = { "3", "Lisa ray", "28","Germany" }; 
+	        writer.writeNext(data3); 
 	  
 	        writer.close(); 
 	    } 
