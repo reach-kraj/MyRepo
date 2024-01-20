@@ -1,9 +1,0 @@
-package threadconcept;
-
-public class ThreadGroup2 extends Thread {
-	IrctcLogin l2;
-	
-	ThreadGroup2(String tName,tg,IrctcLogin l2){
-		this.l2=l2;
-	}
-}

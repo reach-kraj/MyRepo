@@ -1,9 +1,0 @@
-package leetcode;
-
-public class RotateList {
-
-	public static void main(String[] args) {
-
-	}
-
-}
