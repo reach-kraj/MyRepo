@@ -12,7 +12,7 @@ public class BeanToCsvConvert {
 	{ 
 
 		// name of generated csv 
-		final String CSV_LOCATION = "G:\\Employees.csv"; 
+		final String CSV_LOCATION = "c:\\temp\\Employees.csv"; 
 		try { 
 			// Creating writer class to generate 
 			// csv file 
@@ -21,7 +21,7 @@ public class BeanToCsvConvert {
 			// create a list of employee 
 			List<Employee> EmployeeList = new ArrayList<Employee>(); 
 			
-			Employee emp1 = new Employee ("Mahafuj","24","HTc","75000"); 
+			Employee emp1 = new Employee ("Mahafujp","24","HTc","75000"); 
 			Employee emp2 = new Employee ("Aman","24","microsoft","79000"); 
 			Employee emp3 = new Employee ("Suvradip","26","tcs","39000"); 
 			Employee emp4 = new Employee ("Riya","22","NgGear","15000"); 
@@ -39,7 +39,7 @@ public class BeanToCsvConvert {
 			mappingStrategy.setType(Employee.class); 
 
 			// Arrange column name as provided in below array. 
-			String[] columns = {"Name","Age","Company","Salary"}; 
+			String[] columns =new String[] {"Name","Age","Company","Salary"}; 
 			mappingStrategy.setColumnMapping(columns);
 
 			// Creating StatefulBeanToCsv object 

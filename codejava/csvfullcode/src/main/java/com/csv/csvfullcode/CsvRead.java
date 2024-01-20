@@ -9,7 +9,6 @@ public class CsvRead {
 	{ 
 	  
 	    try { 
-	  
 	        // Create an object of filereader 
 	        // class with CSV file as a parameter. 
 	        FileReader filereader = new FileReader(file); 
@@ -33,7 +32,7 @@ public class CsvRead {
 	    } 
 	} 
 	public static void main(String[] args) {
-		String path="G:\\testCsv.csv";
+		String path="c:\\temp\\EmpDetails.csv";
 		CsvRead.readDataLineByLine(path);
 	}
 }

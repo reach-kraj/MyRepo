@@ -32,7 +32,7 @@ package com.csv.csvfullcode;
 			CSVReader csvReader = null;
 			try {
 				csvReader = new CSVReader(new FileReader
-				("G:\\StudentData.csv"));
+				("c:\\temp\\StudentData.csv"));
 			}
 			catch (FileNotFoundException e) {
 
