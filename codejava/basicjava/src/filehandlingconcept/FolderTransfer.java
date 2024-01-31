@@ -1,4 +1,4 @@
-package predefinedjavaclass;
+package filehandlingconcept;
 
 import java.io.File;
 import java.io.IOException;

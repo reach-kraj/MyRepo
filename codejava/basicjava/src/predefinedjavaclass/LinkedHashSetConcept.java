@@ -32,6 +32,7 @@ public class LinkedHashSetConcept {
   
         // Removing existing entry from above Set 
         // using remove() method 
+        // remove() method return an boolean value
         System.out.println("Removing D from LinkedHashSet: "
                            + lHashSet.remove("D")); 
   
@@ -43,7 +44,7 @@ public class LinkedHashSetConcept {
   
         // Checking for element whether it is present inside 
         // Set or not using contains() method 
-        System.out.println("Checking if A is present="
+        System.out.println("Checking if A is present :"
                            + lHashSet.contains("A")); 
   
         // Now lastly printing the updated LinkedHashMap 

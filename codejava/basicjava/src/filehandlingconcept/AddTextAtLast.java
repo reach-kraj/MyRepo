@@ -1,4 +1,4 @@
-package predefinedjavaclass;
+package filehandlingconcept;
 
 import java.io.BufferedWriter;
 import java.io.File;
