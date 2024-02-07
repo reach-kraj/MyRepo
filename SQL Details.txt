@@ -1,0 +1,6 @@
+SQL Details
+SQL Version: 8.0.36
+SQL Port No: 3306
+Web Application : 8081
+SQL UserName: root
+SQL Password: root
