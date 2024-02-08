@@ -1,0 +1,10 @@
+Spring mvc-model view controller
+
+dispactherservlet- http request response
+lib-jar,jstl-jsp tag lib,mysqlconnector
+model-normal java class;
+@controller
+controller class annotation:
+@controller,@request controller, @requestparam
+
+jsp-java server pages;
