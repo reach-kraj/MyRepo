@@ -7,9 +7,11 @@
 <title>Welcome to Infograss FSD Course</title>
 </head>
 <body>
-<p> 
+<p align="center">
 Login to your Account click the button below.
 </p>
-<input type="button" value="Login" onclick="window.location='/sample1/List'" />
+<p align="center">
+<input type="button" value="Login" onclick="window.location='List'" />
+</p>
 </body>
 </html>

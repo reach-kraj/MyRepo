@@ -1,7 +1,5 @@
 package com.sample.controller;
 
-
-
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -12,13 +10,9 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
-
 import java.sql.Statement;
 import java.util.ArrayList;
-
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.async.DeferredResult;
-
 import com.sample.model.Course;
 import com.sample.model.Customer;
 import com.sample.model.Logon;
@@ -52,12 +45,12 @@ public class LogonController {
 	
 	@Autowired
 	private Customer mycust;
-	@RequestMapping("/")  
+	@GetMapping("/")  
 	 public String displays()  
     {  
         return "dashboard";  
     } 
-	@RequestMapping("/index")
+	@GetMapping("/index")
     public String display()  
     {  
         return "index";  
@@ -78,7 +71,6 @@ public class LogonController {
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	String jdbcUrl = "jdbc:mysql://localhost:3306/sampleschemas";
@@ -119,9 +111,7 @@ public class LogonController {
 	return "listcourse";
 	
 }
-
-		
-		
+			
 	@RequestMapping(value = "/satish", method = RequestMethod.POST)
 	public String dashboard(@Validated Customer customer, Model model) {
 		System.out.println("User Page Requested");
@@ -224,8 +214,6 @@ public class LogonController {
 	  return deferredResult;
 	 }
 
-	
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

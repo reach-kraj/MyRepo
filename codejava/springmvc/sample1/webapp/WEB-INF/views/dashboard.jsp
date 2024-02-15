@@ -7,9 +7,11 @@
 <title>DashBoard</title>
 </head>
 <body>
-<p> 
-Welcome to InfoGrass 
+<p align="center">
+       "Welcome to InfoGrass"
+ </p>
+ <p align="center">  
+<input type="button" value="Continue>>>" onclick="window.location='index'" />
 </p>
-<input type="button" value="Continue>>" onclick="window.location='/sample1/index'" />
 </body>
 </html>

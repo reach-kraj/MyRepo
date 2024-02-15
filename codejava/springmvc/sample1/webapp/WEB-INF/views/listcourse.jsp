@@ -16,8 +16,6 @@
     <c:out value = '${course.coursecategory}'/>
     <c:out value = '${course.credits }'/>
    <br>
-       
-       
 </c:forEach>
 </body>
 </html>
