@@ -30,6 +30,8 @@ import com.example.demo.model.CourseEntity;
 import com.example.demo.model.Student;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.mysql.cj.xdevapi.Table;
+
 import org.hibernate.SessionFactory;
 
 
@@ -55,27 +57,56 @@ public class HelloController {
     public @ResponseBody String helloWorld() {
         return "Hello, Java world!";
     }
+  
+    @GetMapping("/getStudents/{IDstudent}")
+    public @ResponseBody String studentList(@PathVariable String IDstudent) {
+    	try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-    @GetMapping("/getStudents")
-    public @ResponseBody String studentList() {
-        // Mock data
-        Student s1 = new Student();
-        s1.setStudentId(123);
-        s1.setDepartmentName("ECE");
-        s1.setName("John");
+            // Establish a database connection
+            String mysqlUrl = "jdbc:mysql://localhost:3306/basicspring";
+            Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
+            
+            
+            // String QUERY = "SELECT * FROM course";
+            // Create a SQL query
+            String QUERY = "SELECT * FROM student WHERE studentID = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(QUERY);
+            preparedStatement.setString(1, IDstudent);
 
-        Student s2 = new Student();
-        s2.setStudentId(124);
-        s2.setDepartmentName("ECE");
-        s2.setName("Lisa");
+            // Execute the prepared statement
+            ResultSet rs = preparedStatement.executeQuery();
 
-        ArrayList<Student> list = new ArrayList<>();
-        list.add(s1);
-        list.add(s2);
+            ArrayList<Student> liststudent = new ArrayList<>();
 
-        Gson gson = new Gson();
-        String jsonArray = gson.toJson(list);
-        return jsonArray;
+            // Iterate through the result set and create course objects
+            while (rs.next()) {
+            	 // Retrieve by column name
+	            String studentID = rs.getString("studentID");
+	            String name = rs.getString("name");
+	            String departmentName = rs.getString("departmentName");
+
+                Student studentobj = new Student();
+                studentobj.setStudentId(studentID);
+                studentobj.setName(name);
+                studentobj.setDepartmentName(departmentName);
+
+                liststudent.add(studentobj);
+            }
+
+            // Convert the course list to JSON using Gson
+            Gson gson = new Gson();
+            JsonElement studentList = gson.toJsonTree(liststudent);
+
+            // Close the database connection
+            con.close();
+
+            return studentList.toString();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return "Error fetching course data: " + e.getMessage();
+        }
     }
 
     @GetMapping("/getCourse/{courseid}")
@@ -85,8 +116,8 @@ public class HelloController {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish a database connection
-            String mysqlUrl = "jdbc:mysql://localhost:3306/sampleschemas";
-            Connection con = DriverManager.getConnection(mysqlUrl, "root", "Root");
+            String mysqlUrl = "jdbc:mysql://localhost:3306/basicspring";
+            Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
             
             
             // String QUERY = "SELECT * FROM course";
@@ -137,8 +168,8 @@ public class HelloController {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             
-            String mysqlUrl = "jdbc:mysql://localhost:3306/sampleschemas";
-            Connection con = DriverManager.getConnection(mysqlUrl, "root", "Root");
+            String mysqlUrl = "jdbc:mysql://localhost:3306/basicspring";
+            Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
 
             
             String UPDATE_SQL = "UPDATE course SET coursename = ? WHERE courseid = ?";
@@ -172,8 +203,8 @@ public class HelloController {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             
-            String mysqlUrl = "jdbc:mysql://localhost:3306/sampleschemas";
-            Connection con = DriverManager.getConnection(mysqlUrl, "root", "Root");
+            String mysqlUrl = "jdbc:mysql://localhost:3306/basicspring";
+            Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
 
             
             String INSERT_SQL = "insert into course(courseid,coursename,coursecategory,credits) values (?, ?, ?, ?) ";
@@ -197,6 +228,35 @@ public class HelloController {
     }
     }
     
+    @PostMapping("/insertStudent")
+    public @ResponseBody String insertStudent (@RequestBody Student student) {
+    	try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            
+            String mysqlUrl = "jdbc:mysql://localhost:3306/basicspring";
+            Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
+
+            
+            String INSERT_SQL = "insert into student(studentId,name,departmentName) values (?, ?, ?) ";
+            
+            PreparedStatement preparedStatement = con.prepareStatement(INSERT_SQL);
+            preparedStatement.setString(1, student.getStudentId());
+            preparedStatement.setString(2, student.getName());
+            preparedStatement.setString(3, student.getDepartmentName());
+            
+            preparedStatement.executeUpdate();
+            
+            con.close();
+
+
+    	return "Student Insertion Completed Successfully.";
+    }catch (Exception e) {
+        e.printStackTrace();
+        return ("Error updating course: " + e.getMessage());
+    }
+    }
     
     @PostMapping("/addCoursehibernate")
     public @ResponseBody String addMoviehibernate() {
@@ -258,8 +318,8 @@ public class HelloController {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             
-            String mysqlUrl = "jdbc:mysql://localhost:3306/sampleschemas";
-            Connection con = DriverManager.getConnection(mysqlUrl, "root", "Root");
+            String mysqlUrl = "jdbc:mysql://localhost:3306/basicspring";
+            Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
 
           String deleteQuery ="delete from course where courseid = ?";
           PreparedStatement preparedStatement = con.prepareStatement(deleteQuery);
@@ -272,7 +332,6 @@ public class HelloController {
             return ("Error inserting  course data: " + e.getMessage());
         }
     }
-    
 }
     
    
