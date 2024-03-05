@@ -30,5 +30,4 @@ public class CustomerDAOImpl implements CustomerDAO {
 				customer.getAddress().getCountry() });
 		System.out.println("Inserted into Address Table Successfully");
 	}
-
 }

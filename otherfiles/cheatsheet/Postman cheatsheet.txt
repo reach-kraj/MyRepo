@@ -1,0 +1,6 @@
+Postman Insert query template:
+{
+"studentId":"06",
+"name":"test",
+"departmentName":"ECE"
+}
