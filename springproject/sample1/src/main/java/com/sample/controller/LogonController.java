@@ -99,7 +99,6 @@ public class LogonController {
             courseobj.setCredits(credits);
             System.out.println("3");
             
-            
            listcourse.add(courseobj);
            System.out.println("4");
            }

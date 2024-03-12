@@ -21,6 +21,4 @@ public class Account {
 		this.outstandingBalance = outstandingBalance;
 	}
 	
-	
-
 }
