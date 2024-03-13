@@ -544,14 +544,13 @@ public class TestHibernate {
 		//flightBasic();
 		//flightbasicHql();
 		//flightMapping();
-		//testBasic();
+//		testBasic();
 		//testMapping();
 		//testValidations();
-		//testOneToOne();
+//		testOneToOne();
 		testOneToMany();
 		//testManyToMany();
 		//testNamedQueries();
 		//flightOneToMany();
-		
 	}
 }
