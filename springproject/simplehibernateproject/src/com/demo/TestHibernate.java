@@ -35,149 +35,66 @@ import com.demo.onetomany.dto.EmployeeEntityOneToMany;
 import jakarta.persistence.Query;
 
 public class TestHibernate {
-	
+
 	public static SessionFactory getSessionFactory(Class[] classes) {
 		Metadata metadata;
-		StandardServiceRegistry standardRegistry
-        = new StandardServiceRegistryBuilder()
-          .configure()
-          .build();
+		StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure().build();
 
 		if(classes == null) {
 			metadata = new MetadataSources(standardRegistry)
-						.getMetadataBuilder()
-						.build();
+					.getMetadataBuilder()
+					.build();
 		} else {
 			MetadataSources metadatasources = new MetadataSources(standardRegistry);
 			for(int index=0; index<classes.length; index++) {
 				metadatasources.addAnnotatedClass(classes[index]);
 			}
 			metadata = metadatasources.getMetadataBuilder()
-	          .build();
-			 
+					.build();
+
 		}
 
-    SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
-    return sessionFactory;
-    
+		SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+		return sessionFactory;
+
 	}
-	
+
 	public static void testBasic() {
 
 		//Session session = HibernateUtil.getSessionFactory().openSession();
-				SessionFactory sessionFactory = getSessionFactory(null);
-				Session session = sessionFactory.openSession();
-				session.beginTransaction();
-
-				// Add new Employee object
-				EmployeeEntity emp = new EmployeeEntity();
-				emp.setEmail("demo1-user@mail.com");
-				emp.setFirstName("mark");
-				emp.setLastName("Zuckerberg");
-
-				session.persist(emp);
-				//session.save(emp);
-				
-				session.getTransaction().commit();
-				System.out.println("Generated emp id is : "+emp.getEmployeeId());
-				//HibernateUtil.shutdown();
-				sessionFactory.close();
-
-	}	
-	
-	
-//	public static void flightBasic() {
-//
-//		//Session session = HibernateUtil.getSessionFactory().openSession();
-//		SessionFactory sessionFactory = getSessionFactory(null);
-//		Session session = sessionFactory.openSession();
-//		session.beginTransaction();
-//
-//				// Add new Employee object
-//				
-//				  FlightEntity flight = new FlightEntity(); 
-//				  //flight.setFlightid("ASDF4567");
-//				  flight.setFlightname("ABCD"); flight.setSource("CHENNAI");
-//				  flight.setDestination("HYDERABAD");
-//				  flight.setDateandtime("09-09-2023 3.00 PM"); 
-//				  session.persist(flight);
-//				  //session.update(flight); 
-//				  //session.save(emp);
-//				  
-//				  //session.getTransaction().commit();
-//				  
-//				  System.out.println("Generated flight id is : "+flight.getFlightid());
-//				  //HibernateUtil.shutdown(); //sessionFactory.close();
-//				  session.get(FlightEntity.class, flight.getFlightid());
-//				  //session.getTransaction().commit(); 
-//				  
-//				  if(flight!=null) {
-//				  System.out.println(flight.getFlightname());
-//				  System.out.println(flight.getSource());
-//				  System.out.println(flight.getDestination());
-//				  System.out.println(flight.getDateandtime());
-//				  
-//				  }
-//				  
-//				  session.get(FlightEntity.class, flight.getFlightid());
-//				  flight.setFlightname("EDFG"); 
-//				  session.update(flight); 
-//				  
-//				  if(flight!=null) {
-//				  System.out.println(flight.getFlightname());
-//				  System.out.println(flight.getSource());
-//				  System.out.println(flight.getDestination());
-//				  System.out.println(flight.getDateandtime());
-//				 
-//				  }
-//				 
-//				session.getTransaction().commit(); 
-//				sessionFactory.close();
-//				
-//				//session.getTransaction().commit();
-//				/*
-//				 * session.get(FlightEntity.class, flight.getFlightid()); if(flight!=null) {
-//				 * session.delete(flight); System.out.println("Flight is deleted"); }
-//				 * //session.delete(flight); session.get(FlightEntity.class,
-//				 * flight.getFlightid()); //session.getTransaction().commit(); if(flight!=null)
-//				 * { System.out.println(flight.getFlightname());
-//				 * System.out.println(flight.getSource());
-//				 * System.out.println(flight.getDestination());
-//				 * System.out.println(flight.getDateandtime());
-//				 * 
-//				 * } session.getTransaction().commit(); sessionFactory.close();
-//				 */
-//	}	
-	
-	public static void flightbasicHql(){
-		
 		SessionFactory sessionFactory = getSessionFactory(null);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		
-		String insertHql = "INSERT INTO FlightEntity (flightname, source, destination, dateandtime) " +
-                "VALUES (:flightname, :source, :destination, :dateandtime)";
-		Query insertQuery = session.createQuery(insertHql);
-		insertQuery.setParameter("flightname", "ABCD");
-		insertQuery.setParameter("source", "CHENNAI");
-		insertQuery.setParameter("destination", "HYDERABAD");
-		insertQuery.setParameter("dateandtime", "09-09-2023 3.00 PM");
-		int rowsInserted = insertQuery.executeUpdate();
-		System.out.println("Rows inserted: " + rowsInserted);
-	}
+
+		// Add new Employee object
+		EmployeeEntity emp = new EmployeeEntity();
+		emp.setEmail("demo1-user@mail.com");
+		emp.setFirstName("mark");
+		emp.setLastName("Zuckerberg");
+
+		session.persist(emp);
+		//session.save(emp);
+
+		session.getTransaction().commit();
+		System.out.println("Generated emp id is : "+emp.getEmployeeId());
+		//HibernateUtil.shutdown();
+		sessionFactory.close();
+
+	}	
+
 	public static void testMapping() {
-		
+
 
 		Student student = new Student();
-		 
+
 		//Setting the object properties.
 		student.setFirstName("John");
 		student.setLastName("Smith");
 		student.setClassName("SOME DEGREE");
 		student.setRollNo("SOMEDEGREE123");
 		student.setAge(21);		
-		
-	
+
+
 		//Session session = HibernateUtil.getSessionFactory().openSession();
 		SessionFactory sessionFactory = getSessionFactory(null);
 		Session session = sessionFactory.openSession();
@@ -188,45 +105,20 @@ public class TestHibernate {
 		System.out.println("Generated student id is : "+student.getStudentId());
 		//HibernateUtil.shutdown();
 		sessionFactory.close();
-		
+
 	}
-	
-//	public static void flightMapping() {
-//			
-//	
-//			 Traveller traveller = new Traveller();
-//			 
-//			//Setting the object properties.
-//			//traveller.setTravellerid("58048033");
-//			traveller.setFirstName("Kanmani");
-//			traveller.setLastName("Kannamma");
-//			traveller.setPassWord("kk");
-//					
-//			
-//		
-//			//Session session = HibernateUtil.getSessionFactory().openSession();
-//			SessionFactory sessionFactory = getSessionFactory(null);
-//			Session session = sessionFactory.openSession();
-//	
-//			session.beginTransaction();
-//			session.persist(traveller); 
-//			session.getTransaction().commit();
-//			System.out.println("Generated traveller id is : "+ traveller.getTravellerId());
-//			//HibernateUtil.shutdown();
-//			sessionFactory.close();
-//			
-//		}
+
 	public static void testOneToOne() {
-		
 
-	    com.demo.onetoone.dto.AccountEntity account = new com.demo.onetoone.dto.AccountEntity();
-	    account.setAccountNumber("123-345-65454");
 
-	    // Add new Employee object
-	    com.demo.onetoone.dto.EmployeeEntity emp = new com.demo.onetoone.dto.EmployeeEntity();
-	    emp.setEmail("demo-user@mail.com");
-	    emp.setFirstName("demo");
-	    emp.setLastName("user");
+		com.demo.onetoone.dto.AccountEntity account = new com.demo.onetoone.dto.AccountEntity();
+		account.setAccountNumber("123-345-65454");
+
+		// Add new Employee object
+		com.demo.onetoone.dto.EmployeeEntity emp = new com.demo.onetoone.dto.EmployeeEntity();
+		emp.setEmail("demo-user@mail.com");
+		emp.setFirstName("demo");
+		emp.setLastName("user");
 
 		Class[] classes = new Class[2];
 		classes[0] = com.demo.onetoone.dto.AccountEntity.class;
@@ -235,31 +127,28 @@ public class TestHibernate {
 		SessionFactory sessionFactory = getSessionFactory(classes);
 		Session session = sessionFactory.openSession();
 
-		
+
 		session.beginTransaction();
 		session.persist(account);
 		System.out.println("One to one mapping: account.getAccountId() "+ account.getAccountId());
 		//session.getTransaction().commit();
-		 emp.setAccount(account);
-		 System.out.println("One to one mapping: emp.getEmployeeId() "+ emp.getEmployeeId());
-		 session.persist(emp);
-		 System.out.println("One to one mapping: emp.getEmployeeId() "+ emp.getEmployeeId());
-		 System.out.println("One to one mapping: account.getAccountId() "+ account.getAccountId());
+		emp.setAccount(account);
+		System.out.println("One to one mapping: emp.getEmployeeId() "+ emp.getEmployeeId());
+		session.persist(emp);
+		System.out.println("One to one mapping: emp.getEmployeeId() "+ emp.getEmployeeId());
+		System.out.println("One to one mapping: account.getAccountId() "+ account.getAccountId());
 
-		 session.getTransaction().commit();
-		
-		
-		 System.out.println("One to one mapping: emp.getEmployeeId() "+ emp.getEmployeeId());
-		 System.out.println("One to one mapping: account.getAccountId() "+ account.getAccountId());
+		session.getTransaction().commit();
 
-		 //HibernateUtil.shutdown();
+		System.out.println("One to one mapping: emp.getEmployeeId() "+ emp.getEmployeeId());
+		System.out.println("One to one mapping: account.getAccountId() "+ account.getAccountId());
+
+		//HibernateUtil.shutdown();
 		sessionFactory.close();
-		
 	}
-	
+
 
 	public static void testOneToMany() {
-		
 		Class[] classes = new Class[2];
 		classes[0] = com.demo.onetomany.dto.AccountEntityOneToMany.class;
 		classes[1] = com.demo.onetomany.dto.EmployeeEntityOneToMany.class;
@@ -267,103 +156,47 @@ public class TestHibernate {
 		SessionFactory sessionFactory = getSessionFactory(classes);
 		Session session = sessionFactory.openSession();
 
-	    AccountEntityOneToMany account1 = new AccountEntityOneToMany();
-	    account1.setAccountNumber("Account detail 1");
+		AccountEntityOneToMany account1 = new AccountEntityOneToMany();
+		account1.setAccountNumber("Account detail 1");
 
-	    AccountEntityOneToMany account2 = new AccountEntityOneToMany();
-	    account2.setAccountNumber("Account detail 2");
+		AccountEntityOneToMany account2 = new AccountEntityOneToMany();
+		account2.setAccountNumber("Account detail 2");
 
-	    AccountEntityOneToMany account3 = new AccountEntityOneToMany();
-	    account3.setAccountNumber("Account detail 3");
+		AccountEntityOneToMany account3 = new AccountEntityOneToMany();
+		account3.setAccountNumber("Account detail 3");
 
-	    //Add new Employee object
-	    EmployeeEntityOneToMany employee = new EmployeeEntityOneToMany();
-	    employee.setEmail("demo-user-first@mail.com");
-	    employee.setFirstName("demo-one");
-	    employee.setLastName("user-one");
+		//Add new Employee object
+		EmployeeEntityOneToMany employee = new EmployeeEntityOneToMany();
+		employee.setEmail("demo-user-first@mail.com");
+		employee.setFirstName("demo-one");
+		employee.setLastName("user-one");
 
-	    Set<AccountEntityOneToMany> accountList = new HashSet<AccountEntityOneToMany>();
-	    accountList.add(account1);
-	    accountList.add(account2);
-	    accountList.add(account3);
+		Set<AccountEntityOneToMany> accountList = new HashSet<AccountEntityOneToMany>();
+		accountList.add(account1);
+		accountList.add(account2);
+		accountList.add(account3);
 
-	    employee.setAccounts(accountList);
+		employee.setAccounts(accountList);
 
-	    session.beginTransaction();
-	    //Save Employee
-	    session.persist(employee);
-	    session.flush();
-	    session.getTransaction().commit();
+		session.beginTransaction();
+		//Save Employee
+		session.persist(employee);
+		session.flush();
+		session.getTransaction().commit();
 
-	    //employee.getAccounts().remove(account3);
-	    //session.flush();
-	    //session.getTransaction().commit();
+		//employee.getAccounts().remove(account3);
+		//session.flush();
+		//session.getTransaction().commit();
 
-	    //session.remove(employee);
-	    //session.flush();
-	//    session.getTransaction().commit();
-		
+		//session.remove(employee);
+		//session.flush();
+		//session.getTransaction().commit();
+
 		sessionFactory.close();
-		
-	}
-	
-	
-//	public static void flightOneToMany() {
-//		
-//
-//
-//		Class[] classes = new Class[2];
-//		classes[0] = com.demo.onetomany.dto.FlightEntityOneToMany.class;
-//		classes[1] = com.demo.onetomany.dto.TravellerEntityOneToMany.class;
-//		//Session session = getSessionFactory(classes).openSession();
-//		SessionFactory sessionFactory = getSessionFactory(classes);
-//		Session session = sessionFactory.openSession();
-//
-//	    FlightEntityOneToMany flight1 = new FlightEntityOneToMany();
-//	    flight1.setFlightName("Flight detail 1");
-//	    flight1.setDateandTime("jj");
-//	    FlightEntityOneToMany flight2 = new FlightEntityOneToMany();
-//	    flight2.setFlightName("Flight detail 2");
-//	    flight2.setDateandTime("jj");
-//
-//	    FlightEntityOneToMany flight3 = new FlightEntityOneToMany();
-//	    flight3.setFlightName("Flight detail 3");
-//	    flight3.setDateandTime("jj");
-//
-//	    //Add new Employee object
-//	    TravellerEntityOneToMany traveller = new TravellerEntityOneToMany();
-//	    traveller.setFirstName("Karthi");
-//	    traveller.setLastName("Vikram");
-//	    traveller.setPassWord("vikram");
-//
-//	    Set<FlightEntityOneToMany> flightList = new HashSet<FlightEntityOneToMany>();
-//	    flightList.add(flight1);
-//	    flightList.add(flight2);
-//	    flightList.add(flight3);
-//
-//	    traveller.setFlights(flightList);
-//
-//	    session.beginTransaction();
-//	    //Save Employee
-//	    session.persist(traveller);
-//	    session.flush();
-//	    session.getTransaction().commit();
-//
-//	    //employee.getAccounts().remove(account3);
-//	    //session.flush();
-//	    //session.getTransaction().commit();
-//
-//	    //session.remove(employee);
-//	    //session.flush();
-//	//    session.getTransaction().commit();
-//		
-//		sessionFactory.close();
-//		
-//	}
-//	
-	public static void testManyToMany() {
-		
 
+	}
+
+	public static void testManyToMany() {
 
 		Class[] classes = new Class[2];
 		classes[0] = com.demo.manytomany.dto.ReaderEntity.class;
@@ -372,185 +205,195 @@ public class TestHibernate {
 		SessionFactory sessionFactory = getSessionFactory(classes);
 		Session session = sessionFactory.openSession();
 
-	    session.beginTransaction();
+		session.beginTransaction();
 
-	    SubscriptionEntity subOne = new SubscriptionEntity();
-	    subOne.setSubscriptionName("Entertainment");
+		SubscriptionEntity subOne = new SubscriptionEntity();
+		subOne.setSubscriptionName("Entertainment");
 
-	    SubscriptionEntity subTwo = new SubscriptionEntity();
-	    subTwo.setSubscriptionName("Horror");
+		SubscriptionEntity subTwo = new SubscriptionEntity();
+		subTwo.setSubscriptionName("Horror");
 
-	    Set<SubscriptionEntity> subs = new HashSet<SubscriptionEntity>();
-	    subs.add(subOne);
-	    subs.add(subTwo);
+		Set<SubscriptionEntity> subs = new HashSet<SubscriptionEntity>();
+		subs.add(subOne);
+		subs.add(subTwo);
 
-	    // Add readers
-	    ReaderEntity readerOne = new ReaderEntity();
-	    readerOne.setEmail("demo-user1@mail.com");
-	    readerOne.setFirstName("demo");
-	    readerOne.setLastName("user");
+		// Add readers
+		ReaderEntity readerOne = new ReaderEntity();
+		readerOne.setEmail("demo-user1@mail.com");
+		readerOne.setFirstName("demo1");
+		readerOne.setLastName("USER1");
 
-	    ReaderEntity readerTwo = new ReaderEntity();
-	    readerTwo.setEmail("demo-user2@mail.com");
-	    readerTwo.setFirstName("demo");
-	    readerTwo.setLastName("user");
+		ReaderEntity readerTwo = new ReaderEntity();
+		readerTwo.setEmail("demo-user2@mail.com");
+		readerTwo.setFirstName("demo2");
+		readerTwo.setLastName("USER2");
 
-	    Set<ReaderEntity> readers = new HashSet<ReaderEntity>();
-	    readers.add(readerOne);
-	    readers.add(readerTwo);
+		Set<ReaderEntity> readers = new HashSet<ReaderEntity>();
+		readers.add(readerOne);
+		readers.add(readerTwo);
 
-	    readerOne.setSubscriptions(subs);
-	    readerTwo.setSubscriptions(subs);
+		readerOne.setSubscriptions(subs);
+		readerTwo.setSubscriptions(subs);
 
-	    session.persist(readerOne);
-	    session.persist(readerTwo);
-	    
-	    session.getTransaction().commit();
-		sessionFactory.close();
+		session.persist(readerOne);
+		session.persist(readerTwo);
 		
+		Query qry = session.createQuery("SELECT r.id, r.email, r.firstName, r.lastName FROM ReaderEntity r");
+		List<Object[]> resultList = ((org.hibernate.query.Query) qry).list();
+		for (Object[] row : resultList) {
+			System.out.println("ID: " + row[0] + ", Email: " + row[1] + ", First Name: " + row[2] + ", Last Name: " + row[3]);
+		}
+
+		Query qry1 = session.createQuery("SELECT r.subscriptionId, r.subscriptionName, r.readers FROM SubscriptionEntity r");
+		List<Object[]> resultList1 = ((org.hibernate.query.Query) qry1).list();
+		for (Object[] row : resultList1) {
+			System.out.println("SubID: " + row[0] + ", Sub Name: " + row[1] + ",Reader Name: " + row[2] );
+		}
+		
+		session.getTransaction().commit();
+		sessionFactory.close();
+
 	}	
 	public static void testValidations() {
-		
-		 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		 Validator validator = factory.getValidator();
+
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
 
 		Student student = new Student();
-		 
+
 		//Setting the object properties.
 		//student.setFirstName("John");
 		student.setLastName("Smith");
 		student.setClassName("SOME DEGREE");
 		student.setRollNo("SOMEDEGREE123");
 		student.setAge(21);		
-		
+
 		Set<ConstraintViolation<Student>> constraintViolations = validator.validate(student);
-		
-		 if (constraintViolations.size() > 0) {
-	            for (ConstraintViolation<Student> violation : constraintViolations) {
-	                System.out.println(violation.getMessage());
-	            }
-	        } else {
-	            System.out.println("Valid Object");
-	        }
-		
+
+		if (constraintViolations.size() > 0) {
+			for (ConstraintViolation<Student> violation : constraintViolations) {
+				System.out.println(violation.getMessage());
+			}
+		} else {
+			System.out.println("Valid Object");
+		}
+
 		//Session session = HibernateUtil.getSessionFactory().openSession();
-			SessionFactory sessionFactory = getSessionFactory(null);
-			Session session = sessionFactory.openSession();
+		SessionFactory sessionFactory = getSessionFactory(null);
+		Session session = sessionFactory.openSession();
 
 		session.beginTransaction();
 		session.persist(student); 
 		session.getTransaction().commit();
 		//HibernateUtil.shutdown();
 		sessionFactory.close();
-		
+
 	}
 
 	public static void testNamedQueries() {
-		
+
 		Class[] classes = new Class[1];
 		classes[0] = com.demo.named.dto.DepartmentEntity.class;
 
 		SessionFactory sessionFactory = getSessionFactory(classes);
 		Session session = sessionFactory.openSession();
-	    session.beginTransaction();
-	    
-	    com.demo.named.dto.DepartmentEntity d1 = new com.demo.named.dto.DepartmentEntity();
-	    d1.setName("HR");
+		session.beginTransaction();
 
-	    com.demo.named.dto.DepartmentEntity d2 = new com.demo.named.dto.DepartmentEntity();
-	    d2.setName("Finance");
+		com.demo.named.dto.DepartmentEntity d1 = new com.demo.named.dto.DepartmentEntity();
+		d1.setName("HR");
 
-	    session.persist(d1);
-	    session.persist(d2);
-	    session.flush();
-	    session.getTransaction().commit();
-	    
-	    Query query =
-	    		session.createNamedQuery(com.demo.named.dto.DepartmentEntity.QUERY_GET_DEPARTMENT_BY_ID)
-	                .setParameter("id", 1);
+		com.demo.named.dto.DepartmentEntity d2 = new com.demo.named.dto.DepartmentEntity();
+		d2.setName("Finance");
 
-	    com.demo.named.dto.DepartmentEntity dept = (com.demo.named.dto.DepartmentEntity) query.getSingleResult();
-	    System.out.println(dept.getName());
-	    
-	    Query query1 =
-	    		session.createNamedQuery(com.demo.named.dto.DepartmentEntity.NATIVE_QUERY_UPDATE_DEPARTMENT_BY_ID)
-	                .setParameter("name", "SUPPORT")
-	                .setParameter("id", 1);
+		session.persist(d1);
+		session.persist(d2);
+		session.flush();
+		session.getTransaction().commit();
 
-	    session.beginTransaction();
-	        query1.executeUpdate();
-	        session.flush();
-	        session.clear();
-		    session.getTransaction().commit();
+		Query query =
+				session.createNamedQuery(com.demo.named.dto.DepartmentEntity.QUERY_GET_DEPARTMENT_BY_ID)
+				.setParameter("id", 1);
 
-		    session.beginTransaction();
-		    Query query2 =
-		    		session.createNamedQuery(com.demo.named.dto.DepartmentEntity.QUERY_GET_DEPARTMENT_BY_ID)
-		                .setParameter("id", 1);
+		com.demo.named.dto.DepartmentEntity dept = (com.demo.named.dto.DepartmentEntity) query.getSingleResult();
+		System.out.println(dept.getName());
 
-		    com.demo.named.dto.DepartmentEntity dept1 = (com.demo.named.dto.DepartmentEntity) query2.getSingleResult();
-		    System.out.println(dept1.getName());
-		    
-		    String hql = "from DepartmentEntity where id > 1";
-		    Query query3 = session.createQuery(hql);
-		    query3.setMaxResults(2);
-		    List<com.demo.named.dto.DepartmentEntity> list = query3.getResultList();
-		    Iterator iter = list.iterator();
-		    while(iter.hasNext()) {
-		    	com.demo.named.dto.DepartmentEntity deptartment = (com.demo.named.dto.DepartmentEntity)iter.next();
-		    	System.out.println("list is" + deptartment.getName());
-		    }
+		Query query1 =
+				session.createNamedQuery(com.demo.named.dto.DepartmentEntity.NATIVE_QUERY_UPDATE_DEPARTMENT_BY_ID)
+				.setParameter("name", "SUPPORT")
+				.setParameter("id", 1);
 
-		    //session.getTransaction().begin();
-		    
-		    //Criteria queries using JPA.
-		    CriteriaBuilder builder = session.getCriteriaBuilder();
-		    CriteriaQuery<com.demo.named.dto.DepartmentEntity> criteriaQuery = builder.createQuery(com.demo.named.dto.DepartmentEntity.class);
-		    Root<com.demo.named.dto.DepartmentEntity> root = criteriaQuery.from(com.demo.named.dto.DepartmentEntity.class);
-		    List<Order> orderList = new ArrayList();
-		    orderList.add(builder.asc(root.get("name")));
-		    
-		    TypedQuery<com.demo.named.dto.DepartmentEntity> queryd = session
-		            .createQuery(criteriaQuery.select(root).orderBy(orderList));
-		    List<com.demo.named.dto.DepartmentEntity> listd = queryd.getResultList();
-		    session.getTransaction().commit();
-		    Iterator<com.demo.named.dto.DepartmentEntity> iterD = listd.iterator();
-		    System.out.println("----------------");
-		    while(iterD.hasNext()) {
-		    	com.demo.named.dto.DepartmentEntity de = (com.demo.named.dto.DepartmentEntity)iterD.next();
-		    	System.out.println(de.getName());
-		    }
-		    
-		    System.out.println("---------get method");
-		    com.demo.named.dto.DepartmentEntity deptGet = (com.demo.named.dto.DepartmentEntity) session.get(com.demo.named.dto.DepartmentEntity.class, new Long(2));
-		    System.out.println("Dept ID= "+deptGet.getId());
+		session.beginTransaction();
+		query1.executeUpdate();
+		session.flush();
+		session.clear();
+		session.getTransaction().commit();
 
-		    
-		    System.out.println("---------load method");
-		    com.demo.named.dto.DepartmentEntity deptLoad = (com.demo.named.dto.DepartmentEntity) session.load(com.demo.named.dto.DepartmentEntity.class, new Long(2));
-		    System.out.println("Dept ID= "+deptLoad.getId());
-		    
-		    sessionFactory.close();
-	    
-		
+		session.beginTransaction();
+		Query query2 =
+				session.createNamedQuery(com.demo.named.dto.DepartmentEntity.QUERY_GET_DEPARTMENT_BY_ID)
+				.setParameter("id", 1);
+
+		com.demo.named.dto.DepartmentEntity dept1 = (com.demo.named.dto.DepartmentEntity) query2.getSingleResult();
+		System.out.println(dept1.getName());
+
+		String hql = "from DepartmentEntity where id > 1";
+		Query query3 = session.createQuery(hql);
+		query3.setMaxResults(2);
+		List<com.demo.named.dto.DepartmentEntity> list = query3.getResultList();
+		Iterator iter = list.iterator();
+		while(iter.hasNext()) {
+			com.demo.named.dto.DepartmentEntity deptartment = (com.demo.named.dto.DepartmentEntity)iter.next();
+			System.out.println("list is" + deptartment.getName());
+		}
+
+		//session.getTransaction().begin();
+
+		//Criteria queries using JPA.
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<com.demo.named.dto.DepartmentEntity> criteriaQuery = builder.createQuery(com.demo.named.dto.DepartmentEntity.class);
+		Root<com.demo.named.dto.DepartmentEntity> root = criteriaQuery.from(com.demo.named.dto.DepartmentEntity.class);
+		List<Order> orderList = new ArrayList();
+		orderList.add(builder.asc(root.get("name")));
+
+		TypedQuery<com.demo.named.dto.DepartmentEntity> queryd = session
+				.createQuery(criteriaQuery.select(root).orderBy(orderList));
+		List<com.demo.named.dto.DepartmentEntity> listd = queryd.getResultList();
+		session.getTransaction().commit();
+		Iterator<com.demo.named.dto.DepartmentEntity> iterD = listd.iterator();
+		System.out.println("----------------");
+		while(iterD.hasNext()) {
+			com.demo.named.dto.DepartmentEntity de = (com.demo.named.dto.DepartmentEntity)iterD.next();
+			System.out.println(de.getName());
+		}
+
+		System.out.println("---------get method");
+		com.demo.named.dto.DepartmentEntity deptGet = (com.demo.named.dto.DepartmentEntity) session.get(com.demo.named.dto.DepartmentEntity.class, new Long(2));
+		System.out.println("Dept ID= "+deptGet.getId());
+
+
+		System.out.println("---------load method");
+		com.demo.named.dto.DepartmentEntity deptLoad = (com.demo.named.dto.DepartmentEntity) session.load(com.demo.named.dto.DepartmentEntity.class, new Long(2));
+		System.out.println("Dept ID= "+deptLoad.getId());
+
+		sessionFactory.close();
+
+
 	}
-	
+
 	public static void testCriteriaQueries() {
-		
+
 	}
-	
-	
+
+
 	public static void main(String[] args) {
-		//flightBasic();
-		//flightbasicHql();
-		//flightMapping();
+
 //		testBasic();
-		//testMapping();
-		//testValidations();
+//		testMapping();
+//		testValidations();
 //		testOneToOne();
-		testOneToMany();
-		//testManyToMany();
-		//testNamedQueries();
-		//flightOneToMany();
+//		testOneToMany();
+		testManyToMany();
+//		testNamedQueries();
+		
 	}
 }

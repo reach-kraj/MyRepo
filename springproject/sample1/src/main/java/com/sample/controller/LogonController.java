@@ -25,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,16 +46,52 @@ public class LogonController {
 	
 	@Autowired
 	private Customer mycust;
-	@GetMapping("/")  
-	 public String displays()  
-    {  
-        return "dashboard";  
-    } 
+	
+	@GetMapping("/")
+	public String displays() 
+	{
+	return "insert";	
+	}
+	 
+	@PostMapping("/insertCourse")
+//	public String insertCourse(@RequestBody Course course, Model model) {
+	public String insertCourse(@RequestParam("courseid") int courseid,
+            @RequestParam("coursename") String coursename,
+            @RequestParam("coursecategory") String coursecategory,
+            @RequestParam("credits") int credits, Model model) {
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+	        String mysqlUrl = "jdbc:mysql://localhost:3306/sampleschemas";
+	        try (Connection con = DriverManager.getConnection(mysqlUrl, "root", "root")) {
+	            String INSERT_SQL = "INSERT into course(courseid, coursename, coursecategory, credits) values (?, ?, ?, ?)";
+
+	            try (PreparedStatement preparedStatement = con.prepareStatement(INSERT_SQL)) {
+	                preparedStatement.setInt(1, courseid);
+	                preparedStatement.setString(2, coursename);
+	                preparedStatement.setString(3, coursecategory);
+	                preparedStatement.setInt(4, credits);
+	               
+	                int rowAffected= preparedStatement.executeUpdate();
+	                if(rowAffected >0) {
+	                	model.addAttribute("message","course Added Successfully");
+	                }
+	            }
+	        }
+	    } catch (Exception e) {
+	    	
+	    }
+	    return "Success";
+	}
+	@GetMapping("/1")  
+	 public String displays1()  
+   {  
+       return "dashboard";  
+   } 
 	@GetMapping("/index")
-    public String display()  
-    {  
-        return "index";  
-    } 
+   public String display()  
+   {  
+       return "index";  
+   } 
 	//@RequestMapping(value = "/vardhan", method = RequestMethod.GET)
 	@GetMapping("/List")
 	public String landing(Locale locale, Model model) throws SQLException {
