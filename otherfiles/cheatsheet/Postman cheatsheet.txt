@@ -1,6 +1,17 @@
 Postman Insert query template:
+
+bootBasic:
+http://localhost:8080/hello
+ 
 {
 "studentId":"06",
 "name":"test",
 "departmentName":"ECE"
+}
+
+{
+"courseid":"02",
+"coursename":"Mech",
+"coursecategory":"BE",
+"cerdits":"9"
 }

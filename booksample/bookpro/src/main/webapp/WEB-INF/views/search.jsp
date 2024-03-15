@@ -15,6 +15,11 @@
 </form>
 <br>
 <br>
+<p align="left">
+<input type="button" value="Show all book" onclick="window.location='${pageContext.request.contextPath}/list'" />
+</p>
+<br>
+<br>
 <p align="center">
 <input type="button" value="Go to HomePage" onclick="window.location='${pageContext.request.contextPath}/'" />
 </p>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,10 +45,7 @@ public class HomeController {
 	{
 		return "search";	
 	}
-	@GetMapping("/edit")
-	public String edit() {
-		return "edit";
-	}
+
 	@GetMapping("/delete")
 	public String delete() {
 		return "delete";
@@ -160,7 +158,7 @@ public class HomeController {
 				try (PreparedStatement statement = connection.prepareStatement(sql)) {
 					statement.setInt(1, bookid);
 					statement.executeUpdate();
-					
+
 					model.addAttribute("message","Deleted Added Successfully");
 				}
 			} 
@@ -170,7 +168,7 @@ public class HomeController {
 		return "success"; 
 	}
 
-	@PostMapping("/editbook")
+	@PostMapping("/editbookinsert")
 	public String editBook(@RequestParam("bookid") int bookid,
 			@RequestParam("bookname") String bookname,
 			@RequestParam("bookauthor") String bookauthor,
@@ -186,7 +184,7 @@ public class HomeController {
 					statement.setInt(4, bookid);
 
 					statement.executeUpdate();
-					
+
 					model.addAttribute("message","Updated Added Successfully");
 				}
 			}
@@ -194,6 +192,105 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		return "success";
+	}
+
+	@GetMapping("/editbook")
+	public String showEdit(@RequestParam("bookid") int bookid, Model model) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			try (Connection connection = DriverManager.getConnection(url, username, password)) {
+				String sql = "SELECT * FROM bookcoll WHERE bookid = ?";
+				try (PreparedStatement statement = connection.prepareStatement(sql)) {
+					statement.setInt(1, bookid);
+					ResultSet resultSet = statement.executeQuery();
+					if (resultSet.next()) {
+						String bookname = resultSet.getString("bookname");
+						String bookauthor = resultSet.getString("bookauthor");
+						String bookprint = resultSet.getString("bookprint");
+
+						model.addAttribute("bookid", bookid);
+						model.addAttribute("bookname", bookname);
+						model.addAttribute("bookauthor", bookauthor);
+						model.addAttribute("bookprint", bookprint);
+					}
+				}
+			}
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return "edit";
+	}
+
+	@GetMapping("/editlist")
+	public String editbook(Model model) throws SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, username, password);
+			String QUERY = "SELECT * FROM bookcoll";
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(QUERY);
+			ArrayList editbook = new ArrayList();
+
+			while (rs.next()) {
+				// Retrieve by column name
+				int bookId = rs.getInt("bookid");
+				String bookname = rs.getString("bookname");
+				String bookauthor = rs.getString("bookauthor");
+				String bookprint = rs.getString("bookprint");
+
+				Book bookobj = new Book();
+
+				bookobj.setBookid(bookId);
+				bookobj.setBookname(bookname);
+				bookobj.setBookauthor(bookauthor);
+				bookobj.setBookprint(bookprint);
+
+				editbook.add(bookobj);
+			}
+
+			model.addAttribute("edited",editbook);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "edited";
+	}
+
+	@GetMapping("/deletelist")
+	public String deletebook(Model model) throws SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, username, password);
+			String QUERY = "SELECT * FROM bookcoll";
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(QUERY);
+			ArrayList deletebook = new ArrayList();
+
+			while (rs.next()) {
+				// Retrieve by column name
+				int bookId = rs.getInt("bookid");
+				String bookname = rs.getString("bookname");
+				String bookauthor = rs.getString("bookauthor");
+				String bookprint = rs.getString("bookprint");
+
+				Book bookobj = new Book();
+
+				bookobj.setBookid(bookId);
+				bookobj.setBookname(bookname);
+				bookobj.setBookauthor(bookauthor);
+				bookobj.setBookprint(bookprint);
+
+				deletebook.add(bookobj);
+			}
+
+			model.addAttribute("delete",deletebook);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "delete";
 	}
 
 	public static void main(String[] args) {

@@ -12,25 +12,6 @@
 Welcome To InfoGrass Book Collection
 </h1>
 
-<!--<table>
-<tr>
-<th><p align="center">
-<input type="button" value="Add book" onclick="window.location='${pageContext.request.contextPath}/add'" />
-</p></th>
-<th><p align="center">
-<input type="button" value="Search book" onclick="window.location='${pageContext.request.contextPath}/search'" />
-</p></th>
-<th><p align="center">
-<input type="button" value="Show all book" onclick="window.location='${pageContext.request.contextPath}/list'" />
-</p></th>
-<th><p align="center">
-<input type="button" value="Edit book" onclick="window.location='${pageContext.request.contextPath}/editbook'" />
-</p></th>
-<th><p align="center">
-<input type="button" value="Delete book" onclick="window.location='${pageContext.request.contextPath}/deletebook'" />
-</p></th>
-</tr>
-</table>-->
 
 <p align="center">
 <input type="button" value="Add book" onclick="window.location='${pageContext.request.contextPath}/add'" />
@@ -42,10 +23,10 @@ Welcome To InfoGrass Book Collection
 <input type="button" value="Show all book" onclick="window.location='${pageContext.request.contextPath}/list'" />
 </p>
 <p align="center">
-<input type="button" value="Edit book" onclick="window.location='${pageContext.request.contextPath}/edit'" />
+<input type="button" value="Edit book" onclick="window.location='${pageContext.request.contextPath}/editlist'" />
 </p>
 <p align="center">
-<input type="button" value="Delete book" onclick="window.location='${pageContext.request.contextPath}/delete'" />
+<input type="button" value="Delete book" onclick="window.location='${pageContext.request.contextPath}/deletelist'" />
 </p>
 </body>
 </html>
