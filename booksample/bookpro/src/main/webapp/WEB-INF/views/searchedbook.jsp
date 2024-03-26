@@ -5,6 +5,24 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Book Found</title>
+<style>
+table {
+  border-collapse: collapse;
+  width: 70%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
 </head>
 <body>
 <h1>Search result</h1>

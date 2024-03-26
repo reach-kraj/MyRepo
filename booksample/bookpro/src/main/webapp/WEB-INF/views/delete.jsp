@@ -6,6 +6,24 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Enter Book to delete for collection</title>
+   <style>
+table {
+  border-collapse: collapse;
+  width: 70%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
 </head>
 <body>
 <!-- <h1>Enter "Book ID" to Delete Book from collection</h1>
@@ -40,7 +58,7 @@
                     <td>${Book.bookprint}</td>
                     <td>
                         <!-- Delete button -->
-                        <form action="${pageContext.request.contextPath}/deletebook" method="GET">
+                        <form action="${pageContext.request.contextPath}/deletebook" method="post">
                             <input type="hidden" name="bookid" value="${Book.bookid}">
                             <button type="submit">Delete Book</button>
                         </form>

@@ -45,11 +45,7 @@ public class HomeController {
 	{
 		return "search";	
 	}
-
-	@GetMapping("/delete")
-	public String delete() {
-		return "delete";
-	}
+	
 	@PostMapping("/addbook")
 	public  String insertbook(@RequestParam("bookid") int bookid,
 			@RequestParam("bookname") String bookname,
@@ -63,7 +59,6 @@ public class HomeController {
 				try (PreparedStatement Statement = con.prepareStatement(sql)) {
 					Statement.setInt(1, bookid);
 					Statement.setString(2, bookname);
-					System.out.println("2");
 					Statement.setString(3, bookauthor);
 					Statement.setString(4, bookprint);
 					int rowAffected= Statement.executeUpdate();
@@ -149,24 +144,6 @@ public class HomeController {
 		return "bookerror";
 	}
 
-	@PostMapping("/deletebook")
-	public String deleteBook(@RequestParam("bookid") int bookid,Model model) throws ClassNotFoundException {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			try (Connection connection = DriverManager.getConnection(url, username, password)) {
-				String sql = "DELETE FROM bookcoll WHERE bookid = ?";
-				try (PreparedStatement statement = connection.prepareStatement(sql)) {
-					statement.setInt(1, bookid);
-					statement.executeUpdate();
-
-					model.addAttribute("message","Deleted Added Successfully");
-				}
-			} 
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return "success"; 
-	}
 
 	@PostMapping("/editbookinsert")
 	public String editBook(@RequestParam("bookid") int bookid,
@@ -256,7 +233,31 @@ public class HomeController {
 		}
 		return "edited";
 	}
+	
+	@GetMapping("/delete")
+	public String delete() {
+		return "delete";
+	}
+	
+	@PostMapping("/deletebook")
+	public String deleteBook(@RequestParam("bookid") int bookid,Model model) throws ClassNotFoundException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			try (Connection connection = DriverManager.getConnection(url, username, password)) {
+				String sql = "DELETE FROM bookcoll WHERE bookid = ?";
+				try (PreparedStatement statement = connection.prepareStatement(sql)) {
+					statement.setInt(1, bookid);
+					statement.executeUpdate();
 
+					model.addAttribute("message","Deleted Added Successfully");
+				}
+			} 
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "success"; 
+	}
+	
 	@GetMapping("/deletelist")
 	public String deletebook(Model model) throws SQLException {
 		try {
