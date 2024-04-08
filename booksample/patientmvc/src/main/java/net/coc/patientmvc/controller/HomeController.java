@@ -22,6 +22,7 @@ import net.coc.patientmvc.model.Patient;
 @Controller
 @RequestMapping(value="/")
 public class HomeController {
+	
     @Autowired
     private PatientService patientService;
 	
@@ -90,7 +91,7 @@ public class HomeController {
 	        patient.setPatientGender(patientGender);
 
 	        patientService.updatePatient(patient);
-
+	        
 	        model.addAttribute("message", "Patient updated successfully.");
 	        return "redirect:/patients/view";
 	    }

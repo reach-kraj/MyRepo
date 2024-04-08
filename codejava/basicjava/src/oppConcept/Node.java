@@ -25,3 +25,7 @@ public class Node
 		this.data = data;
 	}
 }
+
+class Link extends Node{
+	
+}

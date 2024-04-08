@@ -169,11 +169,13 @@ decides how an expression will evaluate.
 
 While solving an expression two things must be kept in mind the first is a precedence and 
 the second is associativity.
+
 1.Precedence
 Precedence is the priority for grouping different types of operators with their operands.
 It is meaningful only if an expression has more than one operator with higher or lower precedence.
 The operators having higher precedence are evaluated first. 
 If we want to evaluate lower precedence operators first, we must group operands by using parentheses and then evaluate.
+
 2.Associativity
 We must follow associativity if an expression has more than two operators of the same precedence. 
 In such a case, an expression can be solved either left-to-right or right-to-left, accordingly.
@@ -517,7 +519,6 @@ if left unspecified, package private.
 
 55.Class Variables:
 A variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type.
-
 Variable is a name of memory location. There are three types of variables in java: local, instance and static.
 
 56.Class Methods:
@@ -562,7 +563,7 @@ Static Block	                                                  Instance Initiali
 It executes during class loading	                               It executes during class instantiation
 It can only use static variables	                               It can use static or non-static (instance variables).
 It can not use this	                                               It can use this
-It executes only once during the entire execution of the program   It can run many times whenever there is a call to the constructor
+It executes only once during the entire execution of the program   It can run many times whenever there is a call to the 	constructor
 when the class loads into the memory	
 
 static initialization:A static initialization block is a normal block of code enclosed in braces, { } , and preceded by the static keyword.
@@ -1245,7 +1246,6 @@ Without generics, many of the features that we use in Java today would not be po
 to be a parameter to methods, classes, and interfaces. Using Generics, it is possible to create classes 
 that work with different data types.
 
-
 153.Type Parameter Naming Conventions
 By convention, type parameter names are single, uppercase letters. This stands in sharp contrast to the variable naming conventions that you already know about, and with good reason: Without this convention, it would be difficult to tell the difference between a type variable and an ordinary class or interface name.
 
@@ -1302,6 +1302,41 @@ public class Util {
 }
 
 159.Bounded Type Parameters
+Bounded type parameters in Java allow you to restrict the types that can be used as type arguments in a generic class or method. You can specify a bound for a type parameter using the `extends` keyword to indicate that the type argument must be a subtype of a specified class or implement a specified interface. This helps ensure type safety and enables you to use methods or access properties specific to the bounded type.
+
+There are two kinds of bounds that can be applied to type parameters:
+
+1. Upper Bound: Specifies that the type argument must be a subtype of the specified type (class or interface).
+   
+   public class Box<T extends Number> {
+       private T value;
+       public Box(T value) {
+           this.value = value;
+       }
+       public T getValue() {
+           return value;
+       }
+       public static void main(String[] args) {
+           Box<Integer> intBox = new Box<>(10);
+           Box<Double> doubleBox = new Box<>(10.5);
+
+           // Compiler error: String is not a subtype of Number
+           // Box<String> stringBox = new Box<>("Hello");
+       }
+   } 
+ Lower Bound: Specifies that the type argument must be a supertype of the specified type.
+   public static <T extends Comparable<? super T>> T max(List<? extends T> list) {
+       T max = list.get(0);
+       for (T element : list) {
+           if (element.compareTo(max) > 0) {
+               max = element;
+           }
+       }
+       return max;
+   }
+In this example, the method `max` accepts a `List` of elements that are subtypes of `T`, and `T` must be a type that is comparable to itself or a supertype of `T`. This allows the method to work with elements that are `T` or any of its superclasses.
+
+Bounded type parameters help improve the flexibility and type safety of generic classes and methods by restricting the types that can be used as type arguments.
 
 161.Generic Classes and Subtyping
 You can subtype a generic class or interface by extending or implementing it. The relationship between the type parameters of one class or
@@ -1510,7 +1545,6 @@ Basically, Java custom exceptions are used to customize the exception according 
 202.Choosing a Superclass
 The class from which its derived is called the superclass. In fact, in Java, all classes must be derived from some class.
 
-
 203.Unchecked Exceptions — The Controversy
 An unchecked exception (also known as an runtime exception) in Java is something that has gone wrong with the program and is 
 unrecoverable. Just because this is not a compile time exception, meaning you do not need to handle it, that does not mean you don't 
@@ -1521,7 +1555,8 @@ An application runs in a platform environment, defined by the underlying operati
 and various configuration data supplied when the application is launched.
 
 235.Properties
-
+import java.util.Properties;
+properties generally refer to key-value pairs that are used to maintain configuration settings or other data in a structured way. The Properties class in Java is specifically designed to handle key-value pairs where both the keys and values are strings
 
 237.What is a command line argument in Java?
 The command line argument in java is the information passed to the program at the time of running the program. 
