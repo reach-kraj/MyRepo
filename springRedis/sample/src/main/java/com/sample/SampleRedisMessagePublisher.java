@@ -1,6 +1,5 @@
 package com.sample;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 public class SampleRedisMessagePublisher {
 	
 	 private final StringRedisTemplate redisTemplate;
-//	    private static final String TOPIC_PREFIX = "sample.topic.";
 
 	    public SampleRedisMessagePublisher(StringRedisTemplate redisTemplate) {
 	        this.redisTemplate = redisTemplate;
@@ -53,7 +51,6 @@ public class SampleRedisMessagePublisher {
     	System.out.println("***********Inside bean inside redisMessageListenerContainer");
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(redisConnectionFactory);
-//        container.addMessageListener(messageListenerAdapter, new ChannelTopic(obj.getChannelName()));
         container.addMessageListener(messageListenerAdapter, new ChannelTopic("Topic"));
         return container;
     }

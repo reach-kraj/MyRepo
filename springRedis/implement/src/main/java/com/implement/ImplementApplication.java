@@ -28,9 +28,9 @@ public class ImplementApplication {
 	    public void init() throws Exception {
 	    	System.out.println("$$$$$$$$$$$$$$$$$$$$inside impapp init");
 	        List<String> listtest = new ArrayList<String>();
-	        listtest.add("repo1");
-	        listtest.add("repo2");
-	        listtest.add("repo3");
+	        listtest.add("repo11");
+	        listtest.add("repo22");
+	        listtest.add("repo33");
 
 	        messagePublisherRunner.init(2, "SourceTest", listtest, "Notifymsg");
 	    }

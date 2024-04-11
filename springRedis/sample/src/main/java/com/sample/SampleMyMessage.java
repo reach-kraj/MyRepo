@@ -8,11 +8,9 @@ public class SampleMyMessage {
     private List<String> recipients;
     private String notificationMsg;
 
-    // Constructor
     public SampleMyMessage() {
     }
 
-    // Getters and setters
     public int getNotificationId() {
         return notificationId;
     }
