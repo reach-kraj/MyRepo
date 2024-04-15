@@ -26,12 +26,11 @@ public class ImplementApplication {
 
 	    @PostConstruct
 	    public void init() throws Exception {
-	    	System.out.println("$$$$$$$$$$$$$$$$$$$$inside impapp init");
 	        List<String> listtest = new ArrayList<String>();
-	        listtest.add("repo11");
-	        listtest.add("repo22");
-	        listtest.add("repo33");
+	        listtest.add("repo10");
+	        listtest.add("repo20");
+	        listtest.add("repo30");
 
-	        messagePublisherRunner.init(2, "SourceTest", listtest, "Notifymsg");
+	        messagePublisherRunner.init(2, "SourceTest", listtest, "Notifymsgtest");
 	    }
 }

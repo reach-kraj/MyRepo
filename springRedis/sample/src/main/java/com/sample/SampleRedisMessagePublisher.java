@@ -23,11 +23,11 @@ public class SampleRedisMessagePublisher {
 	    public void publishMessage(@Qualifier("topic")String topic, String message) {
 	        redisTemplate.convertAndSend(topic, message);
 	    }
+	    
 	    @Bean
 	    public String topic() {
 	        return "Topic";
 	    }
-
 	    
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
@@ -48,11 +48,11 @@ public class SampleRedisMessagePublisher {
     @Bean
     public RedisMessageListenerContainer redisMessageListenerContainer(
             RedisConnectionFactory redisConnectionFactory, MessageListenerAdapter messageListenerAdapter) {
-    	System.out.println("***********Inside bean inside redisMessageListenerContainer");
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(redisConnectionFactory);
         container.addMessageListener(messageListenerAdapter, new ChannelTopic("Topic"));
         return container;
     }
+
 }
 

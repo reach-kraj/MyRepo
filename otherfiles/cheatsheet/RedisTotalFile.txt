@@ -1,0 +1,336 @@
+package com.sample;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SampleApplication {
+
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(SampleApplication.class, args);
+	}
+}
+
+
+package com.sample;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Component
+public class SampleMessagePublisherRunner {
+    
+    private SampleRedisMessagePublisher redisMessagePublisher;
+
+    @Autowired
+    public SampleMessagePublisherRunner(SampleRedisMessagePublisher redisMessagePublisher) {
+        this.redisMessagePublisher = redisMessagePublisher;
+    }
+        
+        public void init(int id, String source,List<String> recipient,String notificationMsg) throws Exception {
+        	System.out.println("***********Inside run inside SampleMessagePublisherRunner");
+        	String getChannelName = "Topic";
+            SampleMyMessage message = new SampleMyMessage();
+            message.setNotificationId(id);
+            message.setSource(source);
+            message.setRecipients(recipient);
+            message.setNotificationMsg(notificationMsg);
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(message);
+            redisMessagePublisher.publishMessage(getChannelName, json);
+            System.out.println("Message published to channel: ");
+        }
+    }
+
+
+package com.sample;
+
+import java.util.List;
+
+public class SampleMyMessage {
+    private int notificationId;
+    private String source;
+    private List<String> recipients;
+    private String notificationMsg;
+
+    public SampleMyMessage() {
+    }
+
+    public int getNotificationId() {
+        return notificationId;
+    }
+
+    public void setNotificationId(int notificationId) {
+        this.notificationId = notificationId;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public List<String> getRecipients() {
+        return recipients;
+    }
+
+    public void setRecipients(List<String> recipients) {
+        this.recipients = recipients;
+    }
+
+    public String getNotificationMsg() {
+        return notificationMsg;
+    }
+
+    public void setNotificationMsg(String notificationMsg) {
+        this.notificationMsg = notificationMsg;
+    }
+}
+
+
+
+package com.sample;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SampleRedisMessagePublisher {
+	
+	 private final StringRedisTemplate redisTemplate;
+
+	    public SampleRedisMessagePublisher(StringRedisTemplate redisTemplate) {
+	        this.redisTemplate = redisTemplate;
+	    }
+	   
+	    public void publishMessage(@Qualifier("topic")String topic, String message) {
+	        redisTemplate.convertAndSend(topic, message);
+	    }
+	    @Bean
+	    public String topic() {
+	        return "Topic";
+	    }
+
+	    
+    @Bean
+    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    	System.out.println("***********Inside bean inside redisTemplate");
+        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
+        return redisTemplate;
+    }
+
+    @Bean
+    public MessageListenerAdapter messageListenerAdapter() {
+    	System.out.println("***********Inside bean inside messageListenerAdapter");
+        return new MessageListenerAdapter(new SampleRedisMessageSubscriber());
+    }
+
+    @Bean
+    public RedisMessageListenerContainer redisMessageListenerContainer(
+            RedisConnectionFactory redisConnectionFactory, MessageListenerAdapter messageListenerAdapter) {
+    	System.out.println("***********Inside bean inside redisMessageListenerContainer");
+        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+        container.setConnectionFactory(redisConnectionFactory);
+        container.addMessageListener(messageListenerAdapter, new ChannelTopic("Topic"));
+        return container;
+    }
+}
+
+
+
+package com.sample;
+
+import org.springframework.data.redis.connection.Message;
+import org.springframework.data.redis.connection.MessageListener;
+
+public class SampleRedisMessageSubscriber implements MessageListener {
+
+    @Override
+    public void onMessage(Message message, byte[] pattern) {
+    	System.out.println("***********Inside Subscriber inside onMessage");
+
+        String channel = new String(message.getChannel());
+        String messageBody = new String(message.getBody());
+        System.out.println("Received message: " + messageBody + " from channel: " + channel);
+    }
+}
+
+spring.application.name=sample
+
+server.port=9494
+
+spring.redis.host=localhost
+spring.redis.port=6379
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sample</groupId>
+	<artifactId>sample</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>sample</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+
+
+package com.implement;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+
+import com.sample.SampleMessagePublisherRunner;
+
+import jakarta.annotation.PostConstruct;
+
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@ComponentScan(basePackages = {"com.sample"})
+public class ImplementApplication {
+
+	 @Autowired
+	    private SampleMessagePublisherRunner messagePublisherRunner;
+
+	    public static void main(String[] args) throws Exception {
+	        SpringApplication.run(ImplementApplication.class, args);
+	    }
+
+	    @PostConstruct
+	    public void init() throws Exception {
+	    	System.out.println("$$$$$$$$$$$$$$$$$$$$inside impapp init");
+	        List<String> listtest = new ArrayList<String>();
+	        listtest.add("repo11");
+	        listtest.add("repo22");
+	        listtest.add("repo33");
+
+	        messagePublisherRunner.init(2, "SourceTest", listtest, "Notifymsg");
+	    }
+}
+
+spring.application.name=implement
+
+server.port=9898
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.implement</groupId>
+	<artifactId>implement</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>implement</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-batch</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sample</groupId>
+			<artifactId>sample</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

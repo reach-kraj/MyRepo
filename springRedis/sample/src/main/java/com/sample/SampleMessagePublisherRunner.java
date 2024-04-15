@@ -17,7 +17,7 @@ public class SampleMessagePublisherRunner {
         this.redisMessagePublisher = redisMessagePublisher;
     }
         
-        public void init(int id, String source,List<String> recipient,String notificationMsg) throws Exception {
+    public void init(int id, String source, List<String> recipient, String notificationMsg) throws Exception {
         	System.out.println("***********Inside run inside SampleMessagePublisherRunner");
         	String getChannelName = "Topic";
             SampleMyMessage message = new SampleMyMessage();
@@ -28,6 +28,6 @@ public class SampleMessagePublisherRunner {
             ObjectMapper mapper = new ObjectMapper();
             String json = mapper.writeValueAsString(message);
             redisMessagePublisher.publishMessage(getChannelName, json);
-            System.out.println("Message published to channel: ");
+            System.out.println("Message published to channel: "+getChannelName);
         }
     }
