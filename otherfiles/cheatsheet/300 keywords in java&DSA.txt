@@ -42,16 +42,16 @@ It is used to achieve abstraction and multiple inheritance in Java.
 
 ->(In other words) you can say that interfaces can have abstract methods and variables. It cannot have a method body.
 
-10.Variables:
+10.VARIABLES:
 A variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type.
 Syntax:
 data_type variablename= value;
 
-11.Operators:
+11.OPERATORS:
 Operators in Java are the symbols used for performing specific operations in Java.
 Types of Operators in Java:-
 Arithmetic Operator,
-Shift Operator,
+Shift Operator;
 Relational Operator,
 Bitwise Operator,
 Logical Operator,
@@ -335,7 +335,6 @@ System.out.println(Adder.add(11,11,11));
 }
 }  
 
-
 37.Providing Constructors for Your Classes
 A class contains constructors that are invoked to create objects from the class blueprint. Constructor declarations look like 
 method declarations—except that they use the name of the class and have no return type. For example, Bicycle has one constructor:
@@ -539,7 +538,6 @@ public class Main {
 
 // Outputs "Hello World!"
 
-
 57.How do I call a method on an object in Java?
 The dot ( . ) is used to access the object's attributes and methods. 
 To call a method in Java, write the method name followed by a set of parentheses (), followed by a semicolon ( ; ).
@@ -623,7 +621,7 @@ public class Main {
 // Outputs 15 (5 + 10)
 
 65.Shadowing:
-Shadowing in Java is the practice of using variables in overlapping scopes with the same name where the variable in low-level
+			Shadowing in Java is the practice of using variables in overlapping scopes with the same name where the variable in low-level
 scope overrides the variable of high-level scope. Here the variable at high-level scope is shadowed by the low-level scope variable. 
 Basic knowledge of this keyword is required before moving ahead.
 
@@ -675,11 +673,10 @@ class GFG {
 }
 
 66.Serialization:
-
-Serialization in Java is the concept of representing an object's state as a byte stream.
- The byte stream has all the information about the object. 
+					Serialization in Java is the concept of representing an object's state as a byte stream.
+The byte stream has all the information about the object. 
 Usually used in Hibernate, JMS, JPA, and EJB, serialization in Java helps transport the code from one JVM to another
- and then de-serialize it there.
+and then de-serialize it there.
 
 76.Inner Class Example:
 
@@ -702,6 +699,7 @@ public class Main {
 //Outputs 15 (5 + 10)
 
 77.Local and Anonymous Classes
+
 What are local classes?
 Local classes are classes that are defined in a block, which is a group of zero or more statements between balanced braces. 
 You typically find local classes defined in the body of a method.
@@ -747,18 +745,20 @@ Java 8 supports inference using Target-Type in a method context.
 83.Method References:
 Method references are a special type of lambda expressions.
 
-They're often used to create simple lambda expressions by referencing existing methods. There are 
-four kinds of method references: 1.Static methods. 2.Instance methods of particular objects. 
+They're often used to create simple lambda expressions by referencing existing methods. 
+There are four kinds of method references: 
+1.Static methods. 
+2.Instance methods of particular objects. 
 3.Instance methods of an arbitrary object of a particular type.
 4.constructor
 
 84.Reference to a static method:
-sytax:ContainingClass::staticMethodName
+								sytax:ContainingClass::staticMethodName
  This syntax specifies the class name followed by a dot and then the static method name. 
  If the method takes any parameters, you would include those within the parentheses.
  
 85.Reference to an instance method of a particular object:
-Syntax:containingObject::instanceMethodName
+															Syntax:containingObject::instanceMethodName
 The method reference myComparisonProvider::compareByName invokes the method compareByName that is part of the object myComparisonProvider. 
 The JRE infers the method type arguments, which in this case are (Person, Person).
 
@@ -779,44 +779,46 @@ The equivalent lambda expression for the method reference String::compareToIgnor
 (String a, String b), where a and b are arbitrary names used to better describe this example. 
 The method reference would invoke the method a.compareToIgnoreCase(b).
 
-87.Reference to a constructor:
-Syntax:ClassName::new
+87.Reference to a constructor: 
+								Syntax:ClassName::new
 You can reference a constructor in the same way as a static method by using the name new.
 
 88.When to Use Nested Classes, Local Classes, Anonymous Classes, and Lambda Expressions
+
 1.Local class: Use it if you need to create more than one instance of a class, access its constructor, or introduce a new, named type 
-(because, for example, you need to invoke additional methods later).
+			  (because, for example, you need to invoke additional methods later).
 
 2.Anonymous class: Use it if you need to declare fields or additional methods.
 
 3.Lambda expression:
-Use it if you are encapsulating a single unit of behavior that you want to pass to other code. 
-For example, you would use a lambda expression if you want a certain action performed on each element of a collection,
-when a process is completed, or when a process encounters an error.
-->Use it if you need a simple instance of a functional interface and none of the preceding criteria apply 
-(for example, you do not need a constructor, a named type, fields, or additional methods).
+					Use it if you are encapsulating a single unit of behavior that you want to pass to other code. 
+					For example, you would use a lambda expression if you want a certain action performed on each element of a collection,
+					when a process is completed, or when a process encounters an error.
+					->Use it if you need a simple instance of a functional interface and none of the preceding criteria apply 
+					(for example, you do not need a constructor, a named type, fields, or additional methods).
 
-4.Nested class: Use it if your requirements are similar to those of a local class, you want to make the type more widely available, 
+4.Nested class: 
+				Use it if your requirements are similar to those of a local class, you want to make the type more widely available, 
 and you don't require access to local variables or method parameters.
 Use a non-static nested class (or inner class) if you require access to an enclosing instance's non-public fields and methods. 
 Use a static nested class if you don't require this access.
 
 89.Enum Types
 An enum type is a special data type that enables for a variable to be a set of predefined constants. 
-The variable must be equal to one of the values that have been predefined for it.
+The variable must be equal to one of the values that have bee                n predefined for it.
 Common examples include compass directions (values of NORTH, SOUTH, EAST, and WEST) and the days of the week.
 Because they are constants, the names of an enum type's fields are in uppercase letters.
 In the Java programming language, you define an enum type by using the enum keyword. For example, you would specify a days-of-the-week 
 enum type as:
 Example:-
 
-public enum Day {
+public enum Day {                                                                                                               
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
     THURSDAY, FRIDAY, SATURDAY 
 }
 
-90.Lesson: Annotations
-Annotations in Java provide additional information to the compiler and JVM. An annotation is a tag representing metadata about classes, interfaces, variables, methods, or fields. Annotations do not impact the execution of the code that they annotate. 
+90.Lesson: Annotations:
+						Annotations in Java provide additional information to the compiler and JVM. An annotation is a tag representing metadata about classes, interfaces, variables, methods, or fields. Annotations do not impact the execution of the code that they annotate. 
 Some of the characteristics of annotations are: Begin with '@'
 
 92.Where Annotations Can Be Used
@@ -918,7 +920,7 @@ Ex:class Student{
 }  
 
 111.Interface Methods
-The interface in Java is a mechanism to achieve abstraction. There can be only abstract methods in the Java interface, not method body. 
+						The interface in Java is a mechanism to achieve abstraction. There can be only abstract methods in the Java interface, not method body. 
 It is used to achieve abstraction and multiple inheritance in Java.
 Example:// interface
 interface Animal {
@@ -927,7 +929,7 @@ interface Animal {
 }
 
 112.Polymorphism
-Polymorphism in Java is a concept by which we can perform a single action in different ways. Polymorphism is derived from 
+				Polymorphism in Java is a concept by which we can perform a single action in different ways. Polymorphism is derived from 
 2 Greek words: poly and morphs. The word "poly" means many and "morphs" means forms. So polymorphism means many forms.
 There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism. 
 We can perform polymorphism in java by method overloading and method overriding.
@@ -935,12 +937,12 @@ We can perform polymorphism in java by method overloading and method overriding.
 If you overload a static method in Java, it is the example of compile time polymorphism.
 
 114.Using the Keyword super
-The super keyword refers to superclass (parent) objects. It is used to call superclass methods, and to access the superclass constructor.
+							The super keyword refers to superclass (parent) objects. It is used to call superclass methods, and to access the superclass constructor.
 The most common use of the super keyword is to eliminate the confusion between superclasses and subclasses that have 
 methods with the same name.
 
 115.Accessing Superclass Members
-We can use super keyword to access the data member or field of parent class. It is used if parent class and child class have same fields.
+								We can use super keyword to access the data member or field of parent class. It is used if parent class and child class have same fields.
 Example:class Animal{  
 String color="white";  
 }  
@@ -959,11 +961,11 @@ d.printColor();
 }  
 
 117.Object as a Superclass
-The Object class is the superclass of all other classes in Java and a part of the built-in java. lang package.
+							The Object class is the superclass of all other classes in Java and a part of the built-in java. lang package.
 If a parent class isn't specified using the extends keyword, the class will inherit from the Object class.
 
 118.The clone() Method
-The clone() method of the Object class is used to create the clone of the object. 
+						The clone() method of the Object class is used to create the clone of the object. 
 However, if the class doesn't support the cloneable interface, then the clone() method generates the CloneNotSupportedException.
 The syntax of the clone() method is given below.
 protected Object clone() throws CloneNotSupportedException
@@ -993,7 +995,7 @@ System.out.println("Class of Object obj is : " + a.getName());
 }
 
 122.The hashCode() Method:
-The hashCode() method is a Java Integer class method which returns the hash code for the given inputs. 
+							The hashCode() method is a Java Integer class method which returns the hash code for the given inputs. 
 Error example:
 public class IntegerHashCodeExample3 {  
     public static void main(String[] args) {  
@@ -1015,7 +1017,7 @@ public class IntegerHashCodeExample4 {
 }  
 
 123.The toString() Method:
-If you want to represent any object as a string, toString() method comes into existence. 
+							If you want to represent any object as a string, toString() method comes into existence. 
 The toString() method returns the String representation of the object. 
 If you print any object, Java compiler internally invokes the toString() method on the object.
 
@@ -1052,7 +1054,7 @@ class Honda extends Bike{
    }  
 }  
 125.Abstract Methods and Classes
-An abstract class is a class that is declared abstract—it may or may not include abstract methods.
+								An abstract class is a class that is declared abstract—it may or may not include abstract methods.
 Abstract classes cannot be instantiated, but they can be subclassed.
 
 An abstract method is a method that is declared without an implementation (without braces, and followed by a semicolon), like this:
@@ -1111,7 +1113,7 @@ class Main extends Language {
 }
 
 128.Class Members
-In Java, class members are the variables, methods, and nested classes that are defined within a class. 
+				In Java, class members are the variables, methods, and nested classes that are defined within a class. 
 Class members are also sometimes referred to as class members variables and class members functions. 
 There are two main types of class members in Java: instance members and static members.
 

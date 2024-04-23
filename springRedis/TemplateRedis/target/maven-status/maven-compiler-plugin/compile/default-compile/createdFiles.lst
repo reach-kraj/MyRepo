@@ -1,0 +1,4 @@
+com\template\redis\TempMessage.class
+com\template\redis\TempSubscriber.class
+com\template\redis\TempBean.class
+com\template\redis\RedisConfiguration.class
