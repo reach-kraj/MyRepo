@@ -441,6 +441,7 @@ Tester tester1 = new Tester();
 Tester tester4 = (Tester)Class.forName("Tester").newInstance();
 
 3. Using clone method.
+create a copy of an object.
 Tester tester2 = tester1.clone();
 
 48.Referencing an Object's Fields:
@@ -753,6 +754,7 @@ There are four kinds of method references:
 4.constructor
 
 84.Reference to a static method:
+without creating an instance
 								sytax:ContainingClass::staticMethodName
  This syntax specifies the class name followed by a dot and then the static method name. 
  If the method takes any parameters, you would include those within the parentheses.
