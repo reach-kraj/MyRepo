@@ -1,8 +1,7 @@
-//1723. Find Minimum Time to Finish All Jobs
 package javacode;
 
-public class Test {
-    public static void main(String[] args) {
+public class TryCatchExample {
+	public static void main(String[] args) {
         try {
             // Code that may throw an exception
             int result = divide(10, 2);

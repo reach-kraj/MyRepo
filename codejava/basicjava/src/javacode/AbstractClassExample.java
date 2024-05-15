@@ -17,7 +17,7 @@ abstract class Base {
 	    }
 	}
 	// Class 3
-public class TestClass {
+public class AbstractClassExample {
 	public static void main(String args[])
     {
         // Uncommenting the following line will cause

@@ -1,6 +1,11 @@
 package javacode;
 
-public class Main {
+class User {
+	String userno;
+	String username;
+	String password;
+}
+public class CreatingObj {
 	public static void main(String[] args) {
 		User p1 = new User();
 		p1.userno="1";
@@ -30,5 +35,4 @@ public class Main {
 		System.out.println(" ");
 		
 	}
-
 }
