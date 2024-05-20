@@ -3,7 +3,7 @@ package filehandlingconcept;
 import java.io.File;  // Import the File class
 public class FileDetails {
 	public static void main(String[] args) {
-		File myObj = new File("G:\\Code\\BooleanCheck.java");
+		File myObj = new File("/Users/Kraj-mac/Work/JavaTestFolder/InputExampleJava.txt");
 		if (myObj.exists()) {
 			System.out.println("File name: " + myObj.getName());
 			System.out.println("Absolute path: " + myObj.getAbsolutePath());

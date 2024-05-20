@@ -3,6 +3,7 @@ package threadconcept;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 class ccslm{
+	
 	ConcurrentSkipListMap<Integer,String> slm =new ConcurrentSkipListMap<>();
 
 	public ConcurrentSkipListMap<Integer, String> ccslminput(int key, String value) {
@@ -62,24 +63,5 @@ class trd4 extends Thread{
 		for(int i=1;i<4;i++) {
 			l1.getlist(i);
 		}
-	}
-}
-
-public class ConCurrSLM {
-
-	public static void main(String[] args) {
-		ccslm obj =new ccslm();
-
-		trd1 t1=new trd1(obj);
-		trd2 t2=new trd2(obj);
-		trd3 t3=new trd3(obj);
-		trd4 t4=new trd4(obj);
-
-		t1.start();
-		t2.start();
-		t3.start();
-		t4.start();
-
-		obj.print();
 	}
 }

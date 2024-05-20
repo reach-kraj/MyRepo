@@ -32,7 +32,7 @@ public class CsvRead {
 	    } 
 	} 
 	public static void main(String[] args) {
-		String path="c:\\temp\\EmpDetails.csv";
+		String path="/Users/Kraj-mac/Work/JavaTestFolder/EmpDetails.csv";
 		CsvRead.readDataLineByLine(path);
 	}
 }

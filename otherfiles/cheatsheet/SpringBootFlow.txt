@@ -3,8 +3,6 @@
 Spring MVC is a web app. It needs some application server to run the war file. Typically, we use tomcat.
 Spring boot is also a web app, but bundled internally with tomcat. So, the output is jar file. Not war file.
 
-1
-2
 3. Presentation - @RestController , Angular code base
 	Business - @Component
 	Persistence - @Service , @Repository, etc etc 

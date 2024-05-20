@@ -1,4 +1,4 @@
-package oppConcept;
+package oppconcept;
 
 public class LinkedList extends Node {
 

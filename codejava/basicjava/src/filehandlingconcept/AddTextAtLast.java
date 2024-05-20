@@ -13,13 +13,13 @@ public class AddTextAtLast {
 		FileOutputStream fos = null;
 
 		try {
-			fis = new FileInputStream("G:\\Code\\BooleanCheck.java");
-			fos = new FileOutputStream("G:\\temp\\New Text Document.java");
+			fis = new FileInputStream("/Users/Kraj-mac/Work/JavaTestFolder/InputExampleJava.txt");
+			fos = new FileOutputStream("/Users/Kraj-mac/Work/JavaTestFolder/OutputExampleJava.txt");
 			int c;
 			while ((c=fis.read())!= -1) {
 				fos.write(c);
 			}
-			File log = new File("G:\\temp\\New Text Document.java");
+			File log = new File("/Users/Kraj-mac/Work/JavaTestFolder/OutputExampleJava.txt");
 			FileWriter finalFile = new FileWriter(log, true);
 			BufferedWriter addAtLast = new BufferedWriter(finalFile);
 			addAtLast.write( "\n"+"Success");
@@ -27,6 +27,7 @@ public class AddTextAtLast {
 		}
 		finally {
 			System.out.println("copied the file successfully");
+			fos.flush();
 			fis.close();
 			fos.close();
 		}

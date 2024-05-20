@@ -40,11 +40,11 @@ class Thread1 extends Thread {
 		String dst="Egmore";
 		String payment="UPI";
 		l1.loginDetails(thread,username,password);
-		try { 
-			Thread.sleep(3000);
-		} catch (InterruptedException e) { 
-			e.printStackTrace(); 
-		}
+//		try { 
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) { 
+//			e.printStackTrace(); 
+//		}
 		l1.selectTrain(thread,src,dst);
 		l1.checkAvailability(thread);
 		l1.paymentGateway(thread,payment);

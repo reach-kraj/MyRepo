@@ -105,5 +105,4 @@ public class StreamsProgram {
 		//non static
 		streamsProgram.arrayFuntion2();
 	}
-
 }

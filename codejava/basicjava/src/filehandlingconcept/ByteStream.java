@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public class ByteStream {
     public static void main(String[] args) {
-        String inputFile = "C:\\temp\\BufferStream.txt";
-        String outputFile = "c:\\temp\\CopyOfBufferStream.txt";
+        String inputFile = "/Users/Kraj-mac/Work/JavaTestFolder/InputExampleJava.txt";
+        String outputFile = "/Users/Kraj-mac/Work/JavaTestFolder/OutputExampleJava.txt";
 
         try (FileInputStream fis = new FileInputStream(inputFile);
              FileOutputStream fos = new FileOutputStream(outputFile)) {

@@ -28,7 +28,7 @@ public class CsvWrite {
 	    } 
 	}
 	public static void main(String[] args) {
-		String path="c:\\temp\\EmpDetails.csv";
+		String path="/Users/Kraj-mac/Work/JavaTestFolder/EmpDetails.csv";
 		CsvWrite.writeDataLineByLine(path);
 	}
 }

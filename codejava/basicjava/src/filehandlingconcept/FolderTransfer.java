@@ -40,8 +40,8 @@ public class FolderTransfer  {
 	}
 	public static void main(String args[]) throws IOException{
 
-		File src=new File("G:\\Code\\");
-		File dst=new File("c:\\temp\\");
+		File src=new File("/Users/Kraj-mac/Work/JavaTestFolder/InputJavaFolder");
+		File dst=new File("/Users/Kraj-mac/Work/JavaTestFolder/OutputJavaFolder");
 		FolderTransfer.copyContent(src,dst);
 	}
 }

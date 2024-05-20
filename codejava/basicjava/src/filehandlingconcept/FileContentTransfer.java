@@ -13,8 +13,8 @@ public class FileContentTransfer {
 		FileOutputStream fos = null;
 
 		try {
-			fis = new FileInputStream("G:\\Code\\BooleanCheck.java");
-			fos = new FileOutputStream("G:\\temp\\New Text Document.java");
+			fis = new FileInputStream("/Users/Kraj-mac/Work/JavaTestFolder/InputExampleJava.txt");
+			fos = new FileOutputStream("/Users/Kraj-mac/Work/JavaTestFolder/OutputExampleJava.txt");
 			int c;
 			while ((c=fis.read())!= -1) {
 				fos.write(c);

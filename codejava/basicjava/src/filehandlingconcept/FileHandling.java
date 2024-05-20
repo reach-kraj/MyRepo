@@ -7,7 +7,7 @@ import java.io.IOException;
 public class FileHandling {
 	public static void main(String[] args) throws IOException {
 		// Create a BufferedReader object
-		BufferedReader reader = new BufferedReader(new FileReader("file.txt"));
+		BufferedReader reader = new BufferedReader(new FileReader("/Users/Kraj-mac/Work/JavaTestFolder/InputExampleJava.txt"));
 
 		// Read a line from the file
 		String line = reader.readLine();

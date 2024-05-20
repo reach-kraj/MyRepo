@@ -20,8 +20,8 @@ public class BufferStream {
 	}
 
 	public static void main(String[] args) throws IOException {
-		File src=new File("C:\\temp\\BufferStream.txt");
-		File dst=new File("c:\\temp\\CopyOfBufferStream.txt");
+		File src=new File("/Users/Kraj-mac/Work/JavaTestFolder/InputExampleJava.txt");
+		File dst=new File("/Users/Kraj-mac/Work/JavaTestFolder/OutputExampleJava.txt");
 		BufferStream streamStart =new BufferStream();
 		streamStart.copyContent(src,dst);
 	}
