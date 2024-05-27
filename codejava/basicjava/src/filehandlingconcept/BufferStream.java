@@ -22,7 +22,7 @@ public class BufferStream {
 	public static void main(String[] args) throws IOException {
 		File src=new File("/Users/Kraj-mac/Work/JavaTestFolder/InputExampleJava.txt");
 		File dst=new File("/Users/Kraj-mac/Work/JavaTestFolder/OutputExampleJava.txt");
-		BufferStream streamStart =new BufferStream();
+		BufferStream streamStart = new BufferStream();
 		streamStart.copyContent(src,dst);
 	}
 }

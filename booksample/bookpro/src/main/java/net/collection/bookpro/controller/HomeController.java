@@ -29,7 +29,7 @@ public class HomeController {
 
 	private static final String url = "jdbc:mysql://localhost:3306/bookdb";
 	private static final String username = "root";
-	private static final String password = "root@12345";
+	private static final String password = "root@123";
 
 	@GetMapping(value="/")
 	public ModelAndView test(HttpServletResponse response) throws IOException{
