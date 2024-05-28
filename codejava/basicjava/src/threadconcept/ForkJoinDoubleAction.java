@@ -38,9 +38,12 @@ public class ForkJoinDoubleAction {
 	      DoubleNumber leftArray = new DoubleNumber(array, startIndex, mid);
 	      DoubleNumber rightArray = new DoubleNumber(array, mid, endIndex);
 
+	      
+	      //recursive task
 	      leftArray.fork();
 	      rightArray.fork();
 
+	     //result
 	      leftArray.join();
 	      rightArray.join();
 	    }

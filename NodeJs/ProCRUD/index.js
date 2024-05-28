@@ -51,7 +51,6 @@ app.get('/users/:id', (req, res) => {
     });
   });
 
-
   //delete
   app.delete('/users/:id', (req, res) => {
     mysqlConnection.query('DELETE FROM employee WHERE EmpID =?',[req.params.id],(err, results) => {
@@ -69,7 +68,8 @@ app.get('/users/:id', (req, res) => {
  //insert
  app.post('/users', (req, res) => {
   let emp = req.body;
-  console.log('Request body:', emp); // Log the request body to debug
+  console.log('Request body:', emp); 
+  // Log the request body to debug
   // if (!emp.EmpID || !emp.Name || !emp.EmpCode || !emp.Salary) {
   //   res.status(400).send('All fields (EmpID, Name, EmpCode, Salary) are required');
   //   return;
