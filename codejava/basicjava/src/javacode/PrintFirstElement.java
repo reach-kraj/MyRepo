@@ -15,6 +15,7 @@ public class PrintFirstElement {
 			System.out.println(firstElement);
 		} else {
 			System.out.println("ArrayList is empty");
+			//just to test
 		}
 	}
 }
