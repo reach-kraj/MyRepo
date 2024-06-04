@@ -1,3 +1,0 @@
-type: 
-npm i 
-To create node_module for nodejs run the above code in Terminal at the folder.
