@@ -4,7 +4,7 @@ public class FindString {
 	String a1="abcdefghijklmnopqrstuvwxyz"; 
 	String a2="ABCDEFGHIJKLMNOPQRSTUVWXYZ";	
 	
-	String givenString1="AazBcCbZ";
+	String givenString1="AazBcbCZ";
 	
 	int gs1=givenString1.length();
 
